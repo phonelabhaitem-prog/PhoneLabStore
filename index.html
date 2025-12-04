@@ -763,6 +763,7 @@
             object-fit: cover;
             filter: brightness(0.9) contrast(1.1);
         }
+
         .card-body {
             padding: 25px;
             position: relative;
@@ -838,7 +839,9 @@
             max-height: 80vh;
             overflow-y: auto;
             border: 2px solid #00d4ff;
-            box-shadow: 0 0 30px rgba(0, 
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+        }
+
         .modal-close {
             float: right;
             font-size: 28px;
@@ -850,8 +853,9 @@
         .modal-close:hover {
             color: #ff006e;
             text-shadow: 0 0 10px #ff006e;
-            }
-.form-group {
+        }
+
+        .form-group {
             margin-bottom: 20px;
         }
 
@@ -916,6 +920,7 @@
             padding: 15px;
             border-bottom: 1px solid rgba(0, 212, 255, 0.2);
         }
+
         .cart-item:last-child {
             border-bottom: none;
         }
@@ -983,6 +988,101 @@
             color: #00d4ff;
             animation: neonGlow 2s ease-in-out infinite;
         }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .contact-link {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            color: #00d4ff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: #0a0e27;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 25px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a4d 50%, #0a0e27 100%);
+            border-top: 2px solid #00d4ff;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .sections {
+                justify-content: center;
+            }
+
+            .theme-toggle {
+                bottom: 20px;
+                right: 20px;
+                width: 52px;
+                height: 52px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo neon-glow">
+                <span>📱 PhoneLab Store</span>
+            </div>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#products">Produits</a>
+                <a href="#contact">Contact</a>
+                <div class="cart-icon" onclick="toggleCartSection()">
+                    🛒
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="theme-toggle" id="themeToggle" onclick="openThemeModal()">
+        🌙
+    </div>
+
+    <div class="theme-modal" id="themeModal">
         <div class="theme-modal-content">
             <span class="modal-close" onclick="closeThemeModal()">&times;</span>
             <h3>Choisir un thème</h3>
@@ -1001,7 +1101,8 @@
             </div>
         </div>
     </div>
-        <main class="container">
+
+    <main class="container">
         <section class="hero">
             <h1 class="neon-glow">Réparation & Vente High-Tech</h1>
             <p>Services de réparation rapides et vente d'appareils électroniques à Chetouane, Tlemcen.</p>
@@ -1047,7 +1148,8 @@
     <footer>
         <p>&copy; 2025 PhoneLab Store - Chetouane, Tlemcen. Tous droits réservés.</p>
     </footer>
-        <div class="modal" id="orderModal">
+
+    <div class="modal" id="orderModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeOrderModal()">&times;</span>
             <h2>Infos commande WhatsApp</h2>
@@ -1082,7 +1184,58 @@
             { id: 5, name: 'PS5 Réparation', category: 'consoles', desc: 'Réparation PS5 et accessoires.', price: '4000-10000 DA', emoji: '🎮' },
             { id: 6, name: 'Xbox Service', category: 'consoles', desc: 'Réparation Xbox et contrôleurs.', price: '3000-8000 DA', emoji: '🎯' }
         ];
-        ev.target.classList.add('active');
+
+        const products = [
+            { id: 101, name: 'iPhone 13', desc: '128 Go, très bon état.', price: '120000 DA', emoji: '📱' },
+            { id: 102, name: 'Samsung S21', desc: '128 Go, garantie 3 mois.', price: '110000 DA', emoji: '📱' },
+            { id: 103, name: 'PC Portable i5', desc: '8 Go RAM, 256 Go SSD.', price: '90000 DA', emoji: '💻' },
+            { id: 104, name: 'PlayStation 5', desc: 'Console + 1 manette.', price: '130000 DA', emoji: '🎮' }
+        ];
+
+        let cart = [];
+
+        function displayServices(list) {
+            const grid = document.getElementById('services-grid');
+            grid.innerHTML = '';
+            list.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-image">${service.emoji}</div>
+                    <div class="card-body">
+                        <div class="card-title">${service.name}</div>
+                        <div class="card-desc">${service.desc}</div>
+                        <div class="card-price">${service.price}</div>
+                        <button class="card-btn" onclick="addToCart('service', ${service.id})">Ajouter</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function displayProducts(list) {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+            list.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-image">${product.emoji}</div>
+                    <div class="card-body">
+                        <div class="card-title">${product.name}</div>
+                        <div class="card-desc">${product.desc}</div>
+                        <div class="card-price">${product.price}</div>
+                        <button class="card-btn" onclick="addToCart('product', ${product.id})">Ajouter</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterServices(ev, category) {
+            const buttons = document.querySelectorAll('.section-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            ev.target.classList.add('active');
 
             if (category === 'all') {
                 displayServices(services);
@@ -1162,8 +1315,9 @@
 
         function closeOrderModal() {
             document.getElementById('orderModal').classList.remove('active');
-            }
-            function submitOrder(e) {
+        }
+
+        function submitOrder(e) {
             e.preventDefault();
             if (cart.length === 0) {
                 alert('Ajoutez au moins un article avant de commander.');
@@ -1195,8 +1349,9 @@
 
         function openThemeModal() {
             document.getElementById('themeModal').classList.add('active');
-                }
-            function closeThemeModal() {
+        }
+
+        function closeThemeModal() {
             document.getElementById('themeModal').classList.remove('active');
         }
 
