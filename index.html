@@ -1,40 +1,484 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>PhoneLab - Réparation smartphones & PC</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-  <div class="nav">
-    <img src="logo.png" alt="PhoneLab">
-    <nav class="nav-links">
-      <a href="index.html" class="active">Accueil</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">À propos</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneLab - Réparation & Vente d'Électronique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<main class="main">
-  <section class="hero">
-    <div>
-      <h1>PhoneLab – By Haitem Telecom</h1>
-      <p>Centre de réparation spécialisé smartphones, PC, consoles de jeux et électronique à Tlemcen.</p>
-      <p>Diagnostic rapide, pièces de qualité et garantie sur chaque intervention.</p>
-      <a href="contact.html" class="btn">Prendre contact</a>
-      <a href="services.html" class="btn btn-secondary" style="margin-left:8px;">Voir nos services</a>
-    </div>
-    <div>
-      <div class="card">
-        <h3>Réparations les plus demandées</h3>
-        <ul>
-          <li>Remplacement d’écrans cassés.</li>
-          <li>Changement de batterie.</li>
-          <li>Réparation carte mère & micro‑soudure.</li>
-          <li>Récupération de données.</li>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            transition: all 0.5s ease;
+        }
+
+        /* LIGHT MODE */
+        body.light-mode {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        body.light-mode header {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 50%, #ffffff 100%);
+            border-bottom-color: #0099ff;
+            color: #333;
+        }
+
+        body.light-mode header .logo {
+            color: #0099ff;
+            animation: none;
+            text-shadow: none;
+        }
+
+        body.light-mode nav a {
+            color: #0099ff;
+        }
+
+        body.light-mode .hero {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 50%, #e6f2ff 100%);
+            border-color: #0099ff;
+            color: #333;
+        }
+
+        body.light-mode .hero h1 {
+            color: #0099ff;
+            animation: none;
+            text-shadow: none;
+        }
+
+        body.light-mode .btn {
+            background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+            color: white;
+            border-color: #0099ff;
+            box-shadow: 0 0 20px rgba(0, 153, 255, 0.2);
+        }
+
+        body.light-mode .btn:hover {
+            background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+            box-shadow: 0 0 30px rgba(0, 153, 255, 0.4);
+            color: white;
+            text-shadow: none;
+        }
+
+        body.light-mode .section-btn {
+            border-color: #0099ff;
+            color: #0099ff;
+            background: white;
+        }
+
+        body.light-mode .section-btn.active {
+            background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 153, 255, 0.3);
+        }
+
+        body.light-mode .card {
+            background: white;
+            border-color: #ddd;
+            color: #333;
+        }
+
+        body.light-mode .card-title {
+            color: #0099ff;
+        }
+
+        body.light-mode .card-price {
+            color: #0066cc;
+        }
+
+        body.light-mode .card-btn {
+            background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+            color: white;
+        }
+
+        body.light-mode .card-desc {
+            color: #666;
+        }
+
+        body.light-mode .contact-section {
+            background: white;
+            border-color: #0099ff;
+            color: #333;
+        }
+
+        body.light-mode .contact-section h2 {
+            color: #0099ff;
+        }
+
+        body.light-mode .contact-link {
+            border-color: #0099ff;
+            color: #0099ff;
+            background: white;
+        }
+
+        body.light-mode .contact-link:hover {
+            background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+            color: white;
+        }
+
+        body.light-mode .modal-content {
+            background: white;
+            border-color: #0099ff;
+            color: #333;
+        }
+
+        body.light-mode .modal-content h2 {
+            color: #0099ff;
+        }
+
+        body.light-mode .form-group label {
+            color: #0099ff;
+        }
+
+        body.light-mode .form-group input,
+        body.light-mode .form-group select,
+        body.light-mode .form-group textarea {
+            background: #f5f5f5;
+            border-color: #ddd;
+            color: #333;
+        }
+
+        body.light-mode footer {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 50%, #ffffff 100%);
+            border-top-color: #0099ff;
+            color: #0099ff;
+        }
+
+        body.light-mode .cart-items {
+            background: white;
+            border-color: #ddd;
+        }
+
+        body.light-mode .cart-item {
+            border-bottom-color: #eee;
+        }
+
+        body.light-mode .cart-summary {
+            background: white;
+            border-color: #ddd;
+        }
+
+        body.light-mode .cart-item-name {
+            color: #0099ff;
+        }
+
+        body.light-mode .cart-item-price {
+            color: #0066cc;
+        }
+
+        body.light-mode .cart-total {
+            color: #0066cc;
+        }
+
+        /* NEON EFFECTS */
+        @keyframes neonGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #0099ff;
+            }
+            50% {
+                text-shadow: 0 0 20px #00d4ff, 0 0 30px #00d4ff, 0 0 40px #0099ff, 0 0 50px #00d4ff;
+            }
+        }
+
+        body.light-mode .neon-glow {
+            animation: none !important;
+            text-shadow: none !important;
+        }
+
+        /* THEME TOGGLE */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            border: 2px solid #00d4ff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 150;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.15) rotate(20deg);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.9);
+        }
+
+        body.light-mode .theme-toggle {
+            background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+            border-color: #0099ff;
+            box-shadow: 0 0 30px rgba(0, 153, 255, 0.4);
+        }
+
+        .theme-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 250;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-modal.active {
+            display: flex;
+        }
+
+        .theme-modal-content {
+            background: linear-gradient(135deg, #1a1a4d 0%, #0f0f3d 100%);
+            border: 2px solid #00d4ff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.1);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px) scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .theme-modal-content h3 {
+            color: #00d4ff;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .theme-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .theme-option {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-option:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .theme-option.active {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            border-color: #00d4ff;
+            color: #0a0e27;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+        }
+
+        .theme-option-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .theme-option-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #00d4ff;
+        }
+
+        .theme-option.active .theme-option-label {
+            color: #0a0e27;
+        }
+
+        .theme-modal-close {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .theme-modal-close button {
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            padding: 10px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .theme-modal-close button:hover {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: #0a0e27;
+        }
+
+        body.light-mode .theme-modal-content {
+            background: white;
+            border-color: #0099ff;
+            box-shadow: 0 0 40px rgba(0, 153, 255, 0.2);
+        }
+
+        body.light-mode .theme-modal-content h3 {
+            color: #0099ff;
+        }
+
+        body.light-mode .theme-option {
+            border-color: #ddd;
+            background: #f5f5f5;
+        }
+
+        body.light-mode .theme-option-label {
+            color: #0099ff;
+        }
+
+        body.light-mode .theme-option:hover {
+            border-color: #0099ff;
+        }
+
+        body.light-mode .theme-option.active {
+            background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+            color: white;
+        }
+
+        body.light-mode .theme-option.active .theme-option-label {
+            color: white;
+        }
+
+        body.light-mode .theme-modal-close button {
+            border-color: #0099ff;
+            color: #0099ff;
+        }
+
+        body.light-mode .theme-modal-close button:hover {
+            background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%);
+            color: white;
+        }
+
+        @keyframes neonBorderGlow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(0, 212, 255, 0.5), inset 0 0 10px rgba(0, 212, 255, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.8), inset 0 0 20px rgba(0, 212, 255, 0.3);
+            }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a4d 50%, #0a0e27 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: neonGlow 2s ease-in-out infinite;
+        }
+
+        .logo img {
+            height: 45px;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6));
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';          <li>Récupération de données.</li>
         </ul>
       </div>
     </div>
