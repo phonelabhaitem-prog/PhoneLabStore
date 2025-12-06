@@ -888,109 +888,126 @@
             text-align: center;
             color: #808080;
         }
-       .nav-toggle {
-    display: none;
-    background: rgba(0, 212, 255, 0.1);
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    padding: 0.4rem 0.8rem;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
+
+        .nav-toggle {
+            display: none;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-toggle:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
 
         /* Responsive */
-@media (max-width: 768px) {
-    nav {
-        flex-wrap: wrap;
-    }
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 1rem;
+            }
 
-    /* Row 1: logo + hamburger */
-    .logo {
-        flex: 1;
-    }
+            .logo {
+                flex: 0 0 auto;
+            }
 
-    .nav-toggle {
-        display: block;
-    }
+            .nav-toggle {
+                display: block;
+                order: 2;
+                margin-left: auto;
+            }
 
-    /* Row 2: language + theme + admin */
-    .nav-right {
-        width: 100%;
-        justify-content: flex-start;
-        margin-top: 0.5rem;
-    }
+            .nav-right {
+                order: 1;
+                width: 100%;
+                margin-bottom: 0.5rem;
+                justify-content: flex-start;
+                gap: 0.5rem;
+            }
 
-    /* Row 3: collapsible links */
-    .nav-center {
-        width: 100%;
-        margin-top: 0.5rem;
-    }
+            .lang-selector, .theme-toggle, .admin-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
 
-    .nav-links {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-        padding-top: 0.5rem;
-        display: none;          /* hidden until hamburger clicked */
-    }
+            .nav-center {
+                width: 100%;
+                order: 3;
+                margin-top: 0.5rem;
+            }
 
-    .nav-links.show {
-        display: flex;
-    }
+            .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding: 0.5rem 0;
+                display: none;
+            }
 
-    /* Existing responsive text/layout tweaks */
-    .hero h1 {
-        font-size: 2rem;
-    }
+            .nav-links.show {
+                display: flex;
+            }
 
-    .hero p {
-        font-size: 1rem;
-    }
+            .hero h1 {
+                font-size: 2rem;
+            }
 
-    .section-title {
-        font-size: 1.8rem;
-    }
+            .hero p {
+                font-size: 1rem;
+            }
 
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
+            .section-title {
+                font-size: 1.8rem;
+            }
 
-    .hero-buttons {
-        flex-direction: column;
-    }
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
 
-    .btn {
-        width: 100%;
-    }
-}
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
-    <div class="logo">
-        <div class="logo-img">📱</div>
-        <span id="logo-text">Phone Lab Haitem</span>
-    </div>
-
-    <button class="nav-toggle" onclick="toggleNav()">☰</button>
-
-    <div class="nav-center">
-        <ul class="nav-links">
-            <li><a onclick="scrollToSection('services');" id="nav-services">Services</a></li>
-            <li><a onclick="scrollToSection('products');" id="nav-products">Products</a></li>
-            <li><a onclick="scrollToSection('repairs');" id="nav-repairs">My Repairs</a></li>
-            <li><a onclick="scrollToSection('booking');" id="nav-booking">Book Now</a></li>
-            <li><a onclick="scrollToSection('about');" id="nav-about">About</a></li>
-            <li><a onclick="scrollToSection('contact');" id="nav-contact">Contact</a></li>
-        </ul>
-    </div>
-
-    <div class="nav-right">
-        <!-- language + theme + admin as you already have -->
-    </div>
-</nav>
+        <div class="logo">
+            <div class="logo-img">📱</div>
+            <span id="logo-text">Phone Lab Haitem</span>
+        </div>
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+        <div class="nav-right">
+            <select class="lang-selector" id="language" onchange="changeLanguage(this.value)">
+                <option value="en">EN</option>
+                <option value="fr">FR</option>
+                <option value="ar">AR</option>
+            </select>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            <button class="admin-btn" onclick="openAdminModal()">Admin</button>
+        </div>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('services'); toggleNav();" id="nav-services">Services</a></li>
+                <li><a onclick="scrollToSection('products'); toggleNav();" id="nav-products">Products</a></li>
+                <li><a onclick="scrollToSection('repairs'); toggleNav();" id="nav-repairs">My Repairs</a></li>
+                <li><a onclick="scrollToSection('booking'); toggleNav();" id="nav-booking">Book Now</a></li>
+                <li><a onclick="scrollToSection('about'); toggleNav();" id="nav-about">About</a></li>
+                <li><a onclick="scrollToSection('contact'); toggleNav();" id="nav-contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1091,14 +1108,14 @@
                     <div class="contact-item-icon">📞</div>
                     <div class="contact-item-text">
                         <h3 id="contact-phone">Phone</h3>
-                        <p id="contact-phone-text">+213 560 32 94 92 - +213 669 74 29 53</p>
+                        <p id="contact-phone-text">+213 XXX XXX XXX</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-item-icon">✉️</div>
                     <div class="contact-item-text">
                         <h3 id="contact-email">Email</h3>
-                        <p id="contact-email-text">phonelab.haitem@gmail.com</p>
+                        <p id="contact-email-text">info@phonelabhaitem.com</p>
                     </div>
                 </div>
                 <a href="#" class="whatsapp-btn" onclick="openWhatsApp(); return false;" id="whatsapp-link">
@@ -1237,9 +1254,9 @@
                 'contact-address': 'Address',
                 'contact-address-text': 'Tlemcen, Tlemcen Province, Algeria',
                 'contact-phone': 'Phone',
-                'contact-phone-text': '+213 560 32 94 92 - +213 669 74 29 53',
+                'contact-phone-text': '+213 XXX XXX XXX',
                 'contact-email': 'Email',
-                'contact-email-text': 'phonelab.haitem@gmail.com',
+                'contact-email-text': 'info@phonelabhaitem.com',
                 'whatsapp-text': 'Chat on WhatsApp',
                 'form-name': 'Name',
                 'form-email': 'Email',
@@ -1289,9 +1306,9 @@
                 'contact-address': 'Adresse',
                 'contact-address-text': 'Tlemcen, Province de Tlemcen, Algérie',
                 'contact-phone': 'Téléphone',
-                'contact-phone-text': '+213 560 32 94 92 - +213 669 74 29 53',
+                'contact-phone-text': '+213 XXX XXX XXX',
                 'contact-email': 'E-mail',
-                'contact-email-text': 'phonelab.haitem@gmail.com',
+                'contact-email-text': 'info@phonelabhaitem.com',
                 'whatsapp-text': 'Chatter sur WhatsApp',
                 'form-name': 'Nom',
                 'form-email': 'E-mail',
@@ -1341,9 +1358,9 @@
                 'contact-address': 'العنوان',
                 'contact-address-text': 'تلمسان، ولاية تلمسان، الجزائر',
                 'contact-phone': 'الهاتف',
-                'contact-phone-text': '+213 560 32 94 92 - +213 669 74 29 53',
+                'contact-phone-text': '+213 XXX XXX XXX',
                 'contact-email': 'البريد الإلكتروني',
-                'contact-email-text': 'Phonelab.haitem@gmail.com',
+                'contact-email-text': 'info@phonelabhaitem.com',
                 'whatsapp-text': 'دردشة على WhatsApp',
                 'form-name': 'الاسم',
                 'form-email': 'البريد الإلكتروني',
@@ -1428,6 +1445,11 @@
         }
 
         // Theme Toggle
+        function toggleNav() {
+            const links = document.querySelector('.nav-links');
+            links.classList.toggle('show');
+        }
+
         function toggleTheme() {
             isDarkMode = !isDarkMode;
             const body = document.body;
@@ -1602,7 +1624,7 @@
 
         // WhatsApp Integration
         function openWhatsApp() {
-            const phoneNumber = '+213560329492'; // Replace with actual number
+            const phoneNumber = '+213XXXXXXXXX'; // Replace with actual number
             const message = encodeURIComponent('Hello, I need device repair services.');
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
@@ -1621,7 +1643,7 @@
             const password = document.getElementById('admin-password').value;
             
             // Simple login (replace with real authentication)
-            if (username === 'PhoneLabHaitem3113#@@' && password === '123456789') {
+            if (username === 'admin' && password === 'admin123') {
                 adminLoggedIn = true;
                 closeAdminModal();
                 document.getElementById('adminPanel').classList.add('show');
@@ -1865,7 +1887,7 @@
             console.log('Email notification:', message);
             // Example: Send to admin email
             // emailjs.send('service_id', 'template_id', {
-            //     to_email: 'phonelab.haitem@gmail.com',
+            //     to_email: 'admin@phonelabhaitem.com',
             //     message: message
             // });
         }
@@ -1897,13 +1919,8 @@
 
         function openGoogleSheets() {
             // Replace with your Google Sheets link
-            window.open('https://docs.google.com/spreadsheets/d/1vkt18PHQHiV5mv66gBY4v2cfL03AMITtf8HhhF0nyVk/edit?gid=0#gid=0', '_blank');
+            window.open('https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit', '_blank');
         }
-        function toggleNav() {
-    const links = document.querySelector('.nav-links');
-    links.classList.toggle('show');
-}
-
     </script>
 </body>
 </html>
