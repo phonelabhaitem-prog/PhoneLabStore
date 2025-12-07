@@ -183,18 +183,25 @@
 .neon-logo-primary {
     font-family: 'Allura', cursive;
     font-size: 2rem;
-    color: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
+    background: linear-gradient(90deg, #00d4ff 0%, #00ff88 25%, #ff006e 50%, #00d4ff 75%, #00ff88 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-shadow: 
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 20px #00d4ff,
-        0 0 40px #00d4ff,
-        0 0 80px #00d4ff,
-        0 0 90px #00d4ff,
-        0 0 100px #00d4ff;
-    animation: neon-flicker 2.5s infinite alternate;
+        0 0 5px rgba(0,212,255,0.8),
+        0 0 10px rgba(0,255,136,0.6),
+        0 0 20px rgba(255,0,110,0.5),
+        0 0 30px rgba(0,212,255,0.4);
+    animation: neon-flicker 2.5s infinite alternate, gradient-slide 4s linear infinite;
     letter-spacing: 0.05em;
     line-height: 1;
+}
+
+@keyframes gradient-slide {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
 }
 
 .neon-logo-subtitle {
