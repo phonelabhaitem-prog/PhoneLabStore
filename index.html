@@ -97,10 +97,10 @@
             text-shadow: 0 0 8px rgba(0, 119, 170, 0.3);
         }
 
-        body.light-mode .hero {
-            background: linear-gradient(135deg, rgba(0, 119, 170, 0.05), rgba(204, 0, 82, 0.05)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,119,170,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(255,255,255,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-        }
+       body.light-mode .hero {
+            background: linear-gradient(135deg, rgba(0, 119, 170, 0.05), rgba(204, 0, 82, 0.05)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,119,170,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(255,255,255,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+        }
 
         body.light-mode .hero p {
             color: #555;
@@ -446,25 +446,23 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
                 gap: 0.5rem;
             }
 
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-        }
+        .nav-links a {
+                font-size: 0.85rem;
+            }
+        }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(10,14,39,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(10,14,39,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }nav-links .hero::before {
             content: '';
             position: absolute;
             width: 500px;
