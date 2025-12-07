@@ -1,2415 +1,1709 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phone Lab Haitem - Device Repair Services</title>
-     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&family=Allura&family=Parisienne&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Lab Haitem - Device Repair Services</title>
+     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&family=Allura&family=Parisienne&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        :root {
-            --primary: #00d4ff;
-            --secondary: #ff006e;
-            --dark: #0a0e27;
-            --darker: #050811;
-            --light: #f5f5f5;
-            --accent: #00ff88;
-            --danger: #ff1744;
-            --success: #00c853;
-        }
+        :root {
+            --primary: #00d4ff;
+            --secondary: #ff006e;
+            --dark: #0a0e27;
+            --darker: #050811;
+            --light: #f5f5f5;
+            --accent: #00ff88;
+            --danger: #ff1744;
+            --success: #00c853;
+        }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html {
+            scroll-behavior: smooth;
+        }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--dark);
-            color: #e0e0e0;
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
-        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: #e0e0e0;
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
 
-        body.dark-mode {
-            background: var(--dark);
-            color: #e0e0e0;
-        }
+        body.dark-mode {
+            background: var(--dark);
+            color: #e0e0e0;
+        }
 
-        body.light-mode {
-            background: #ffffff;
-            color: #1a1a1a;
-            --primary: #0077aa;
-            --secondary: #cc0052;
-            --accent: #00aa44;
-            --darker: #f0f0f0;
-            --dark: #e8e8e8;
-        }
+        body.light-mode {
+            background: #ffffff;
+            color: #1a1a1a;
+            --primary: #0077aa;
+            --secondary: #cc0052;
+            --accent: #00aa44;
+            --darker: #f0f0f0;
+            --dark: #e8e8e8;
+        }
 
-        body.light-mode .service-card {
-            background: linear-gradient(135deg, rgba(0, 119, 170, 0.08), rgba(204, 0, 82, 0.08));
-            border: 1px solid rgba(0, 119, 170, 0.3);
-        }
+        body.light-mode .service-card {
+            background: linear-gradient(135deg, rgba(0, 119, 170, 0.08), rgba(204, 0, 82, 0.08));
+            border: 1px solid rgba(0, 119, 170, 0.3);
+        }
 
-        body.light-mode .service-card p {
-            color: #555;
-        }
+        body.light-mode .service-card p {
+            color: #555;
+        }
 
-        body.light-mode .service-card h3 {
-            color: var(--primary);
-        }
+        body.light-mode .service-card h3 {
+            color: var(--primary);
+        }
 
-        body.light-mode .about {
-            background: linear-gradient(135deg, rgba(0, 119, 170, 0.08), rgba(204, 0, 82, 0.08));
-        }
+        body.light-mode .about {
+            background: linear-gradient(135deg, rgba(0, 119, 170, 0.08), rgba(204, 0, 82, 0.08));
+        }
 
-        body.light-mode .about p {
-            color: #444;
-        }
+        body.light-mode .about p {
+            color: #444;
+        }
 
-        body.light-mode .form-group input,
-        body.light-mode .form-group textarea {
-            background: #f5f5f5;
-            border: 1px solid rgba(0, 119, 170, 0.3);
-            color: #1a1a1a;
-        }
+        body.light-mode .form-group input,
+        body.light-mode .form-group textarea {
+            background: #f5f5f5;
+            border: 1px solid rgba(0, 119, 170, 0.3);
+            color: #1a1a1a;
+        }
 
-        body.light-mode .form-group label {
-            color: var(--primary);
-        }
+        body.light-mode .form-group label {
+            color: var(--primary);
+        }
 
-        body.light-mode nav {
-            background: linear-gradient(135deg, #f5f5f5 0%, rgba(245, 245, 245, 0.95) 100%);
-            border-bottom: 1px solid rgba(0, 119, 170, 0.2);
-        }
+        body.light-mode nav {
+            background: linear-gradient(135deg, #f5f5f5 0%, rgba(245, 245, 245, 0.95) 100%);
+            border-bottom: 1px solid rgba(0, 119, 170, 0.2);
+        }
 
-        body.light-mode .nav-links a {
-            color: #1a1a1a;
-        }
+        body.light-mode .nav-links a {
+            color: #1a1a1a;
+        }
 
-        body.light-mode .nav-links a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 8px rgba(0, 119, 170, 0.3);
-        }
+        body.light-mode .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px rgba(0, 119, 170, 0.3);
+        }
 
-        body.light-mode .hero {
-            background: linear-gradient(135deg, rgba(0, 119, 170, 0.05), rgba(204, 0, 82, 0.05)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,119,170,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(255,255,255,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-        }
+        body.light-mode .hero {
+            background: linear-gradient(135deg, rgba(0, 119, 170, 0.05), rgba(204, 0, 82, 0.05)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,119,170,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(255,255,255,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+        }
 
-        body.light-mode .hero p {
-            color: #555;
-        }
+        body.light-mode .hero p {
+            color: #555;
+        }
 
-        body.light-mode footer {
-            background: #f5f5f5;
-            border-top: 1px solid rgba(0, 119, 170, 0.2);
-            color: #666;
-        }
+        body.light-mode footer {
+            background: #f5f5f5;
+            border-top: 1px solid rgba(0, 119, 170, 0.2);
+            color: #666;
+        }
 
-        body.light-mode .modal-content {
-            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-            border: 1px solid rgba(0, 119, 170, 0.3);
-        }
+        body.light-mode .modal-content {
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            border: 1px solid rgba(0, 119, 170, 0.3);
+        }
 
-        body.light-mode .service-item {
-            background: rgba(0, 119, 170, 0.05);
-            border: 1px solid rgba(0, 119, 170, 0.2);
-        }
+        body.light-mode .service-item {
+            background: rgba(0, 119, 170, 0.05);
+            border: 1px solid rgba(0, 119, 170, 0.2);
+        }
 
-        body.light-mode .service-item-info input {
-            background: #f5f5f5;
-            border: 1px solid rgba(0, 119, 170, 0.3);
-            color: #1a1a1a;
-        }
+        body.light-mode .service-item-info input {
+            background: #f5f5f5;
+            border: 1px solid rgba(0, 119, 170, 0.3);
+            color: #1a1a1a;
+        }
 
-        body.light-mode .contact-item-text p {
-            color: #555;
-        }
+        body.light-mode .contact-item-text p {
+            color: #555;
+        }
 
-        /* Navigation */
-        nav {
-            background: linear-gradient(135deg, var(--darker) 0%, rgba(10, 14, 39, 0.95) 100%);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-            flex-wrap: wrap;
-        }
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--darker) 0%, rgba(10, 14, 39, 0.95) 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            flex-wrap: wrap;
+        }
 
-        body.light-mode nav {
-            background: linear-gradient(135deg, #f5f5f5 0%, rgba(245, 245, 245, 0.95) 100%);
-            border-bottom: 1px solid rgba(0, 119, 170, 0.2);
-        }
+        body.light-mode nav {
+            background: linear-gradient(135deg, #f5f5f5 0%, rgba(245, 245, 245, 0.95) 100%);
+            border-bottom: 1px solid rgba(0, 119, 170, 0.2);
+        }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-         .neon-logo-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    position: relative;
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+         .neon-logo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    position: relative;
 }
 
 .neon-logo-primary {
-    font-family: 'Allura', cursive;
-    font-size: 5rem;
-    background: linear-gradient(90deg, #0077aa 0%, #00aa44 25%, #cc0052 50%, #0077aa 75%, #00aa44 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 
-        0 0 5px rgba(0,119,170,0.6),
-        0 0 10px rgba(0,170,68,0.5),
-        0 0 20px rgba(204,0,82,0.4),
-        0 0 30px rgba(0,119,170,0.3);
-    animation: neon-flicker 2.5s infinite alternate, gradient-slide 4s linear infinite,glow 3s ease-in-out infinite;
-    letter-spacing: 0.05em;
-    line-height: 1;
+    font-family: 'Allura', cursive;
+    font-size: 5rem;
+    background: linear-gradient(90deg, #0077aa 0%, #00aa44 25%, #cc0052 50%, #0077aa 75%, #00aa44 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+        0 0 5px rgba(0,119,170,0.6),
+        0 0 10px rgba(0,170,68,0.5),
+        0 0 20px rgba(204,0,82,0.4),
+        0 0 30px rgba(0,119,170,0.3);
+    animation: neon-flicker 2.5s infinite alternate, gradient-slide 4s linear infinite,glow 3s ease-in-out infinite;
+    letter-spacing: 0.05em;
+    line-height: 1;
 }
 body.light-mode .neon-logo-primary {
-    background: linear-gradient(90deg, #0077aa 0%, #00aa44 25%, #cc0052 50%, #0077aa 75%, #00aa44 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: none 
-    animation: neon-gradient 3s ease infinite, neon-flicker 2.5s infinite alternate;
+    background: linear-gradient(90deg, #0077aa 0%, #00aa44 25%, #cc0052 50%, #0077aa 75%, #00aa44 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none 
+    animation: neon-gradient 3s ease infinite, neon-flicker 2.5s infinite alternate;
 }
 @keyframes gradient-slide {
-    0% { background-position: 0% center; }
-    50% { background-position: 100% center; }
-    100% { background-position: 0% center; }
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
 }
 
 .neon-logo-subtitle {
-    font-family: 'Parisienne', sans-serif;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
-    text-shadow: 
-        0 0 3px rgba(255, 255, 255, 0.5),
-        0 0 7px rgba(255, 0, 110, 0.6),
-        0 0 15px rgba(255, 0, 110, 0.4);
-    letter-spacing: 0.1em;
-    margin-left: 2rem;
-    font-weight: 300;
-    opacity: 0.9;
+    font-family: 'Parisienne', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 
+        0 0 3px rgba(255, 255, 255, 0.5),
+        0 0 7px rgba(255, 0, 110, 0.6),
+        0 0 15px rgba(255, 0, 110, 0.4);
+    letter-spacing: 0.1em;
+    margin-left: 2rem;
+    font-weight: 300;
+    opacity: 0.9;
 }
 body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
-    text-shadow: 
-        0 0 3px rgba(255, 255, 255, 0.5),
-        0 0 7px rgba(255, 0, 110, 0.6),
-        0 0 1px rgba(255, 0, 110, 0.4);
-    letter-spacing: 0.1em;
-    margin-left: 2rem;
-    font-weight: 300;
-    opacity: 0.9;
+    text-shadow: 
+        0 0 3px rgba(255, 255, 255, 0.5),
+        0 0 7px rgba(255, 0, 110, 0.6),
+        0 0 1px rgba(255, 0, 110, 0.4);
+    letter-spacing: 0.1em;
+    margin-left: 2rem;
+    font-weight: 300;
+    opacity: 0.9;
 }
 @keyframes neon-flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px #00d4ff,
-            0 0 40px #00d4ff,
-            0 0 80px #00d4ff,
-            0 0 90px #00d4ff,
-            0 0 100px #00d4ff;
-    }
-    20%, 24%, 55% {        
-        text-shadow:
-            0 0 3px #fff,
-            0 0 5px #00d4ff;
-    }
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #00d4ff,
+            0 0 40px #00d4ff,
+            0 0 80px #00d4ff,
+            0 0 90px #00d4ff,
+            0 0 100px #00d4ff;
+    }
+    20%, 24%, 55% {        
+        text-shadow:
+            0 0 3px #fff,
+            0 0 5px #00d4ff;
+    }
 }
 
 /* Mobile adjustments */
 @media (max-width: 640px) {
-    .neon-logo-primary {
-        font-size: 1.5rem;
-    }
-    .neon-logo-subtitle {
-        font-size: 0.6rem;
-        margin-left: 1.5rem;
-    }
+    .neon-logo-primary {
+        font-size: 1.5rem;
+    }
+    .neon-logo-subtitle {
+        font-size: 0.6rem;
+        margin-left: 1.5rem;
+    }
 }
 
 
-        .nav-toggle {
-            display: none;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .nav-toggle:hover {
-            background: var(--primary);
-            color: var(--dark);
-            box-shadow: 0 0 15px var(--primary);
-        }
-
-        .nav-center {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: #e0e0e0;
-            text-decoration: none;
-            transition: color 0.3s, text-shadow 0.3s;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        body.light-mode .nav-links a {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .nav-links a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 8px rgba(0, 119, 170, 0.3);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 8px var(--primary);
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        .lang-selector, .theme-toggle, .admin-btn {
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 0.5rem 0.8rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        body.light-mode .lang-selector,
-        body.light-mode .theme-toggle,
-        body.light-mode .admin-btn {
-            background: rgba(0, 119, 170, 0.1);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .lang-selector:hover, .theme-toggle:hover, .admin-btn:hover {
-            background: var(--primary);
-            color: var(--dark);
-            box-shadow: 0 0 15px var(--primary);
-        }
-
-        /* Tablet and smaller */
-        @media (max-width: 992px) {
-            nav {
-                gap: 1rem;
-            }
-
-            .nav-center {
-                order: 3;
-                width: 100%;
-                flex: unset;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-right {
-                order: 2;
-            }
-
-            .nav-toggle {
-                display: block;
-                order: 2;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.75rem;
-                padding-top: 0.5rem;
-                display: none;
-            }
-
-            .nav-links.show {
-                display: flex;
-            }
-
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 640px) {
-            nav {
-                padding: 0.75rem 1rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-                gap: 8px;
-                order: 1;
-            }
-
-            .logo-img {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            .nav-toggle {
-                order: 2;
-                padding: 0.4rem 0.6rem;
-                font-size: 1rem;
-            }
-
-            .nav-right {
-                order: 3;
-                width: 100%;
-                margin-top: 0.5rem;
-                gap: 0.5rem;
-                justify-content: space-around;
-            }
-
-            .lang-selector, .theme-toggle, .admin-btn {
-                padding: 0.5rem 0.6rem;
-                font-size: 0.75rem;
-                flex: 1;
-                text-align: center;
-            }
-
-            .nav-center {
-                order: 4;
-                margin-top: 0.5rem;
-            }
-
-            .nav-links {
-                gap: 0.5rem;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(10,14,39,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.2), transparent);
-            border-radius: 50%;
-            top: -100px;
-            right: -100px;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 0, 110, 0.15), transparent);
-            border-radius: 50%;
-            bottom: -100px;
-            left: -100px;
-            animation: float 10s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-30px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: none; }
-            50% { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #b0b0b0;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: var(--dark);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
-        }
-
-        .btn-secondary {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--dark);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary);
-            text-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 110, 0.05));
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 2rem;
-            border-radius: 10px;
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .service-card p {
-            color: #a0a0a0;
-            margin-bottom: 1rem;
-        }
-
-        .service-price {
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 110, 0.05));
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about h2 {
-            color: var(--primary);
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-
-        .about p {
-            color: #b0b0b0;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .contact-item-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .contact-item-text h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item-text p {
-            color: #a0a0a0;
-        }
-
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #25D366;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s;
-            margin-top: 1rem;
-        }
-
-        .whatsapp-btn:hover {
-            background: #20BA5C;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .form-g        }
-
-        body.dark-mode {
-            background: var(--dark);
-            color: #e0e0e0;
-        }
-
-        body.light-mode {
-            background: #ffffff;
-            color: #1a1a1a;
-            --primary: #0077aa;
-            --secondary: #cc0052;
-            --accent: #00aa44;
-            --darker: #f0f0f0;
-            --dark: #e8e8e8;
-        }
-
-        body.light-mode .service-card {
-            background: linear-gradient(135deg, rgba(0, 119, 170, 0.08), rgba(204, 0, 82, 0.08));
-            border: 1px solid rgba(0, 119, 170, 0.3);
-        }
-
-        body.light-mode .service-card p {
-            color: #555;
-        }
-
-        body.light-mode .service-card h3 {
-            color: var(--primary);
-        }
-
-        body.light-mode .about {
-            background: linear-gradient(135deg, rgba(0, 119, 170, 0.08), rgba(204, 0, 82, 0.08));
-        }
-
-        body.light-mode .about p {
-            color: #444;
-        }
-
-        body.light-mode .form-group input,
-        body.light-mode .form-group textarea {
-            background: #f5f5f5;
-            border: 1px solid rgba(0, 119, 170, 0.3);
-            color: #1a1a1a;
-        }
-
-        body.light-mode .form-group label {
-            color: var(--primary);
-        }
-
-        body.light-mode nav {
-            background: linear-gradient(135deg, #f5f5f5 0%, rgba(245, 245, 245, 0.95) 100%);
-            border-bottom: 1px solid rgba(0, 119, 170, 0.2);
-        }
-
-        body.light-mode .nav-links a {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .nav-links a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 8px rgba(0, 119, 170, 0.3);
-        }
-
-        body.light-mode .hero {
-            background: linear-gradient(135deg, rgba(0, 119, 170, 0.05), rgba(204, 0, 82, 0.05)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,119,170,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(255,255,255,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-        }
-
-        body.light-mode .hero p {
-            color: #555;
-        }
-
-        body.light-mode footer {
-            background: #f5f5f5;
-            border-top: 1px solid rgba(0, 119, 170, 0.2);
-            color: #666;
-        }
-
-        body.light-mode .modal-content {
-            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-            border: 1px solid rgba(0, 119, 170, 0.3);
-        }
-
-        body.light-mode .service-item {
-            background: rgba(0, 119, 170, 0.05);
-            border: 1px solid rgba(0, 119, 170, 0.2);
-        }
-
-        body.light-mode .service-item-info input {
-            background: #f5f5f5;
-            border: 1px solid rgba(0, 119, 170, 0.3);
-            color: #1a1a1a;
-        }
-
-        body.light-mode .contact-item-text p {
-            color: #555;
-        }
-
-        /* Navigation */
-        nav {
-            background: linear-gradient(135deg, var(--darker) 0%, rgba(10, 14, 39, 0.95) 100%);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-            flex-wrap: wrap;
-        }
-
-        body.light-mode nav {
-            background: linear-gradient(135deg, #f5f5f5 0%, rgba(245, 245, 245, 0.95) 100%);
-            border-bottom: 1px solid rgba(0, 119, 170, 0.2);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-         .neon-logo-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    position: relative;
-}
-
-.neon-logo-primary {
-    font-family: 'Allura', cursive;
-    font-size: 4rem;
-    background: linear-gradient(90deg, #00d4ff 0%, #00ff88 25%, #ff006e 50%, #00d4ff 75%, #00ff88 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 
-        0 0 5px rgba(0,212,255,0.8),
-        0 0 10px rgba(0,255,136,0.6),
-        0 0 20px rgba(255,0,110,0.5),
-        0 0 30px rgba(0,212,255,0.4);
-    animation: neon-flicker 2.5s infinite alternate, gradient-slide 4s linear infinite;
-    letter-spacing: 0.05em;
-    line-height: 1;
-}
-
-@keyframes gradient-slide {
-    0% { background-position: 0% center; }
-    50% { background-position: 100% center; }
-    100% { background-position: 0% center; }
-}
-
-.neon-logo-subtitle {
-    font-family: 'Parisienne', sans-serif;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
-    text-shadow: 
-        0 0 3px rgba(255, 255, 255, 0.5),
-        0 0 7px rgba(255, 0, 110, 0.6),
-        0 0 15px rgba(255, 0, 110, 0.4);
-    letter-spacing: 0.1em;
-    margin-left: 2rem;
-    font-weight: 300;
-    opacity: 0.9;
-}
-
-@keyframes neon-flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px #00d4ff,
-            0 0 40px #00d4ff,
-            0 0 80px #00d4ff,
-            0 0 90px #00d4ff,
-            0 0 100px #00d4ff;
-    }
-    20%, 24%, 55% {        
-        text-shadow:
-            0 0 3px #fff,
-            0 0 5px #00d4ff;
-    }
-}
-
-/* Mobile adjustments */
-@media (max-width: 640px) {
-    .neon-logo-primary {
-        font-size: 1.5rem;
-    }
-    .neon-logo-subtitle {
-        font-size: 0.6rem;
-        margin-left: 1.5rem;
-    }
-}
-
-
-        .nav-toggle {
-            display: none;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .nav-toggle:hover {
-            background: var(--primary);
-            color: var(--dark);
-            box-shadow: 0 0 15px var(--primary);
-        }
-
-        .nav-center {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: #e0e0e0;
-            text-decoration: none;
-            transition: color 0.3s, text-shadow 0.3s;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        body.light-mode .nav-links a {
-            color: #1a1a1a;
-        }
-
-        body.light-mode .nav-links a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 8px rgba(0, 119, 170, 0.3);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 8px var(--primary);
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        .lang-selector, .theme-toggle, .admin-btn {
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 0.5rem 0.8rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        body.light-mode .lang-selector,
-        body.light-mode .theme-toggle,
-        body.light-mode .admin-btn {
-            background: rgba(0, 119, 170, 0.1);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .lang-selector:hover, .theme-toggle:hover, .admin-btn:hover {
-            background: var(--primary);
-            color: var(--dark);
-            box-shadow: 0 0 15px var(--primary);
-        }
-
-        /* Tablet and smaller */
-        @media (max-width: 992px) {
-            nav {
-                gap: 1rem;
-            }
-
-            .nav-center {
-                order: 3;
-                width: 100%;
-                flex: unset;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-right {
-                order: 2;
-            }
-
-            .nav-toggle {
-                display: block;
-                order: 2;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.75rem;
-                padding-top: 0.5rem;
-                display: none;
-            }
-
-            .nav-links.show {
-                display: flex;
-            }
-
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 640px) {
-            nav {
-                padding: 0.75rem 1rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-                gap: 8px;
-                order: 1;
-            }
-
-            .logo-img {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            .nav-toggle {
-                order: 2;
-                padding: 0.4rem 0.6rem;
-                font-size: 1rem;
-            }
-
-            .nav-right {
-                order: 3;
-                width: 100%;
-                margin-top: 0.5rem;
-                gap: 0.5rem;
-                justify-content: space-around;
-            }
-
-            .lang-selector, .theme-toggle, .admin-btn {
-                padding: 0.5rem 0.6rem;
-                font-size: 0.75rem;
-                flex: 1;
-                text-align: center;
-            }
-
-            .nav-center {
-                order: 4;
-                margin-top: 0.5rem;
-            }
-
-            .nav-links {
-                gap: 0.5rem;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(10,14,39,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.2), transparent);
-            border-radius: 50%;
-            top: -100px;
-            right: -100px;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 0, 110, 0.15), transparent);
-            border-radius: 50%;
-            bottom: -100px;
-            left: -100px;
-            animation: float 10s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-30px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: none; }
-            50% { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #b0b0b0;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: var(--dark);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
-        }
-
-        .btn-secondary {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--dark);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary);
-            text-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 110, 0.05));
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 2rem;
-            border-radius: 10px;
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .service-card p {
-            color: #a0a0a0;
-            margin-bottom: 1rem;
-        }
-
-        .service-price {
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 110, 0.05));
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about h2 {
-            color: var(--primary);
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-
-        .about p {
-            color: #b0b0b0;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .contact-item-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .contact-item-text h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item-text p {
-            color: #a0a0a0;
-        }
-
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #25D366;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s;
-            margin-top: 1rem;
-        }
-
-        .whatsapp-btn:hover {
-            background: #20BA5C;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            color: #e0e0e0;
-            padding: 0.8rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
-        }
-
-        /* Admin Login Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.show {
-            display: flex;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, var(--darker), var(--dark));
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .admin-panel {
-            display: none;
-        }
-
-        .admin-panel.show {
-            display: block;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Booking Calendar */
-        .calendar-container {
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .calendar-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 0.5rem;
-        }
-
-        .calendar-day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 5px;
-            cursor: pointer;
-            background: rgba(0, 212, 255, 0.05);
-            transition: all 0.3s;
-        }
-
-        .calendar-day:hover {
-            background: rgba(0, 212, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .calendar-day.selected {
-            background: var(--primary);
-            color: var(--dark);
-            border-color: var(--primary);
-        }
-
-        .calendar-day.disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        /* Repair Status */
-        .status-badge {
-            display: inline-block;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .status-pending {
-            background: rgba(255, 152, 0, 0.2);
-            color: #ffb74d;
-            border: 1px solid rgba(255, 152, 0, 0.3);
-        }
-
-        .status-fixed {
-            background: rgba(0, 200, 83, 0.2);
-            color: #4caf50;
-            border: 1px solid rgba(0, 200, 83, 0.3);
-        }
-
-        .status-paid {
-            background: rgba(76, 175, 80, 0.2);
-            color: #66bb6a;
-            border: 1px solid rgba(76, 175, 80, 0.3);
-        }
-
-        /* Product Card */
-        .product-card {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 110, 0.05));
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            background: rgba(0, 212, 255, 0.1);
-        }
-
-        .product-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .product-price {
-            color: var(--accent);
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .product-card .btn-sm {
-            width: 100%;
-        }
-
-        /* Repair Status Tracking */
-        .repair-item {
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .repair-header {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 1rem;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .repair-details {
-            display: grid;
-            gap: 0.5rem;
-        }
-
-        .repair-id {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .repair-device {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-        }
-
-        .repair-timeline {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .timeline-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .timeline-dot {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: rgba(0, 212, 255, 0.2);
-            border: 2px solid rgba(0, 212, 255, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-
-        .timeline-dot.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--dark);
-        }
-
-        .timeline-label {
-            font-size: 0.75rem;
-            color: #a0a0a0;
-            text-align: center;
-        }
-
-        .timeline-connector {
-            width: 30px;
-            height: 2px;
-            background: rgba(0, 212, 255, 0.2);
-        }
-
-        /* Notifications */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: var(--dark);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
-            animation: slideInRight 0.3s ease-out;
-            z-index: 3000;
-            max-width: 400px;
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            color: var(--primary);
-        }
-
-        .admin-tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
-        }
-
-        .admin-tab {
-            background: none;
-            border: none;
-            color: #a0a0a0;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1rem;
-        }
-
-        .admin-tab.active {
-            color: var(--primary);
-            border-bottom: 2px solid var(--primary);
-            text-shadow: 0 0 10px var(--primary);
-        }
-
-        .admin-content {
-            display: none;
-        }
-
-        .admin-content.show {
-            display: block;
-        }
-
-        .service-list {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .service-item {
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 1.5rem;
-            border-radius: 8px;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .service-item-info input {
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            color: #e0e0e0;
-            padding: 0.5rem;
-            border-radius: 5px;
-            width: 100%;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-item-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .btn-sm {
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-        }
-
-        .btn-danger {
-            background: var(--danger);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--darker);
-            border-top: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 2rem;
-            text-align: center;
-            color: #808080;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-        }
-    </style>
+        .nav-toggle {
+            display: none;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-toggle:hover {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        body.light-mode .nav-links a {
+            color: #1a1a1a;
+        }
+
+        body.light-mode .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px rgba(0, 119, 170, 0.3);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .lang-selector, .theme-toggle, .admin-btn {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        body.light-mode .lang-selector,
+        body.light-mode .theme-toggle,
+        body.light-mode .admin-btn {
+            background: rgba(0, 119, 170, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .lang-selector:hover, .theme-toggle:hover, .admin-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* Tablet and smaller */
+        @media (max-width: 992px) {
+            nav {
+                gap: 1rem;
+            }
+
+            .nav-center {
+                order: 3;
+                width: 100%;
+                flex: unset;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-right {
+                order: 2;
+            }
+
+            .nav-toggle {
+                display: block;
+                order: 2;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+                padding-top: 0.5rem;
+                display: none;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                gap: 8px;
+                order: 1;
+            }
+
+            .logo-img {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .nav-toggle {
+                order: 2;
+                padding: 0.4rem 0.6rem;
+                font-size: 1rem;
+            }
+
+            .nav-right {
+                order: 3;
+                width: 100%;
+                margin-top: 0.5rem;
+                gap: 0.5rem;
+                justify-content: space-around;
+            }
+
+            .lang-selector, .theme-toggle, .admin-btn {
+                padding: 0.5rem 0.6rem;
+                font-size: 0.75rem;
+                flex: 1;
+                text-align: center;
+            }
+
+            .nav-center {
+                order: 4;
+                margin-top: 0.5rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="rgba(10,14,39,1)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.2), transparent);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 0, 110, 0.15), transparent);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: none; }
+            50% { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 110, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #a0a0a0;
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 110, 0.05));
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .about p {
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-item-text h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item-text p {
+            color: #a0a0a0;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5C;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: #e0e0e0;
+            padding: 0.8rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Admin Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.show {
+            display: block;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Booking Calendar */
+        .calendar-container {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+            background: rgba(0, 212, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .calendar-day:hover {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: var(--primary);
+        }
+
+        .calendar-day.selected {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
+        }
+
+        .calendar-day.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Repair Status */
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ffb74d;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .status-fixed {
+            background: rgba(0, 200, 83, 0.2);
+            color: #4caf50;
+            border: 1px solid rgba(0, 200, 83, 0.3);
+        }
+
+        .status-paid {
+            background: rgba(76, 175, 80, 0.2);
+            color: #66bb6a;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        /* Product Card */
+        .product-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 110, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .product-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-card .btn-sm {
+            width: 100%;
+        }
+
+        /* Repair Status Tracking */
+        .repair-item {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+            
+        .repair-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+            
+        .repair-details {
+            display: grid;
+            gap: 0.5rem;
+        }
+            
+        .repair-id {
+            color: var(--primary);
+            font-weight: 600;
+        }
+            
+        .repair-device {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+            
+        .repair-timeline {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+            
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+            
+        .timeline-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+            
+        .timeline-dot.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--dark);
+        }
+        .timeline-label {
+            font-size: 0.75rem;
+            color: #a0a0a0;
+            text-align: center;
+        }
+        .timeline-connector {
+            width: 30px;
+            height: 2px;
+            background: rgba(0, 212, 255, 0.2);
+        }
+        /* Notifications */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--dark);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+            animation: slideInRight 0.3s ease-out;
+            z-index: 3000;
+            max-width: 400px;
+        }
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+        }
+        .admin-tab {
+            background: none;
+            border: none;
+            color: #a0a0a0;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        .admin-tab.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+        .admin-content {
+            display: none;
+        }
+        .admin-content.show {
+            display: block;
+        }
+        .service-list {
+            display: grid;
+            gap: 1rem;
+        }
+        .service-item {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: center;
+        }
+        .service-item-info input {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: #e0e0e0;
+            padding: 0.5rem;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        .service-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+        .btn-danger {
+            background: var(--danger);
+        }
+        /* Footer */
+        footer {
+            background: var(--darker);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            text-align: center;
+            color: #808080;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
-<body>        <!-- Navigation -->
-        <nav>
-                                <div class="logo">
-    <div class="logo-img">
-        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/2cabd52f-3305-471c-925b-f606e099fdb9" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-    <div class="neon-logo-container">
-        <span class="neon-logo-primary">PhoneLab</span>
-        <span class="neon-logo-subtitle">By Haitem Telecom</span>
-    </div>
+<body>        <!-- Navigation -->
+        <nav>
+                                <div class="logo">
+    <div class="logo-img">
+        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/2cabd52f-3305-471c-925b-f606e099fdb9" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="neon-logo-container">
+        <span class="neon-logo-primary">PhoneLab</span>
+        <span class="neon-logo-subtitle">By Haitem Telecom</span>
+    </div>
 </div>
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a onclick="scrollToSection('services'); closeNav();" id="nav-services">Services</a></li>
+                    <li><a onclick="scrollToSection('products'); closeNav();" id="nav-products">Products</a></li>
+                    <li><a onclick="scrollToSection('repairs'); closeNav();" id="nav-repairs">My Repairs</a></li>
+                    <li><a onclick="scrollToSection('booking'); closeNav();" id="nav-booking">Book Now</a></li>
+                    <li><a onclick="scrollToSection('about'); closeNav();" id="nav-about">About</a></li>
+                    <li><a onclick="scrollToSection('contact'); closeNav();" id="nav-contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <select class="lang-selector" id="language" onchange="changeLanguage(this.value)">
+                    <option value="en">EN</option>
+                    <option value="fr">FR</option>
+                    <option value="ar">AR</option>
+                </select>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</button>
+                <button class="admin-btn" onclick="openAdminModal()">Admin</button>
+            </div>
+        </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="hero-title">Phone Lab Haitem</h1>
+            <p id="hero-subtitle">Fast, Reliable Device Repair Services</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary" onclick="scrollToSection('services'); return false;" id="btn-explore">Explore Services</a>
+                <a href="#" class="btn btn-secondary" onclick="scrollToSection('booking'); return false;" id="btn-booking">Book Appointment</a>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title" id="services-title">Our Services</h2>
+        <div class="services-grid" id="services-grid">
+            <!-- Services will be populated here -->
+        </div>
+    </section>
+    <!-- Products Section -->
+    <section id="products" class="services">
+        <h2 class="section-title" id="products-title">Products For Sale</h2>
+        <div class="services-grid" id="products-grid">
+            <!-- Products will be populated here -->
+        </div>
+    </section>
+    <!-- Repair Status Section -->
+    <section id="repairs" class="services">
+        <h2 class="section-title" id="repairs-title">Check Your Repair Status</h2>
+        <div style="max-width: 600px; margin: 0 auto; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); padding: 2rem; border-radius: 10px;">
+            <div class="form-group">
+                <label for="repair-code" id="status-code-label">Enter Receipt Code</label>
+                <input type="text" id="repair-code" placeholder="RP001" style="text-transform: uppercase; letter-spacing: 2px;">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="checkRepairStatus()" id="btn-check-status">Check Status</button>
+        </div>
+        <div id="repairs-list" style="margin-top: 2rem;">
+            <p id="no-repairs" style="text-align: center; color: #a0a0a0;">Enter a receipt code above to check your repair status</p>
+        </div>
+    </section>        <!-- Appointment Booking Section -->
+    <section id="booking" class="services">
+        <h2 class="section-title" id="booking-title">Book an Appointment</h2>
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="appointment-date" id="label-appt-date">Preferred Date</label>
+                    <input type="date" id="appointment-date" style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); color: #e0e0e0; padding: 0.8rem; border-radius: 5px;">
+                </div>
+                <div class="form-group">
+                    <label for="appointment-service" id="label-service">Select Service</label>
+                    <select id="appointment-service" style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); color: #e0e0e0; padding: 0.8rem; border-radius: 5px;">
+                        <option>Screen Repair</option>
+                        <option>Battery Replacement</option>
+                        <option>Water Damage</option>
+                        <option>Accessories</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointment-name" id="label-appt-name">Name</label>
+                    <input type="text" id="appointment-name" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="appointment-phone" id="label-appt-phone">Phone</label>
+                    <input type="tel" id="appointment-phone" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="appointment-time" id="label-appt-time">Preferred Time</label>
+                    <input type="time" id="appointment-time" style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); color: #e0e0e0; padding: 0.8rem; border-radius: 5px;">
+                </div>
+                <button class="btn btn-primary" onclick="bookAppointment()" id="btn-book">Book Appointment</button>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 id="about-title">About Us</h2>
+        <p id="about-text-1">At Phone Lab Haitem, we provide exceptional repair services for all your mobile devices and electronics. With years of expertise and proven experience, our skilled technicians handle everything from screen repairs to water damage recovery.</p>
+        <p id="about-text-2">Our mission is simple: Repair, Refurbish, Reuse, and Recycle. We are dedicated to extending the life of your devices while promoting sustainability and delivering reliable, high-quality service that protects your data and the environment.</p>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title" id="contact-title">Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div class="contact-item-text">
+                        <h3 id="contact-address">Address</h3>
+                        <p id="contact-address-text">Tlemcen, Tlemcen Province, Algeria</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <div class="contact-item-text">
+                        <h3 id="contact-phone">Phone</h3>
+                        <p id="contact-phone-text">+213 XXX XXX XXX</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">✉️</div>
+                    <div class="contact-item-text">
+                        <h3 id="contact-email">Email</h3>
+                        <p id="contact-email-text">Phonelab.haitem@gmail.com</p>
+                    </div>
+                </div>
+                <a href="#" class="whatsapp-btn" onclick="openWhatsApp(); return false;" id="whatsapp-link">
+                    💬 <span id="whatsapp-text">Chat on WhatsApp</span>
+                </a>
+            </div>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name" id="form-name">Name</label>
+                    <input type="text" id="name" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="email" id="form-email">Email</label>
+                    <input type="email" id="email" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="message" id="form-message">Message</label>
+                    <textarea id="message" rows="5" placeholder=""></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="submitForm()" id="btn-submit">Submit</button>
+            </div>
+        </div>
+    </section>
+    <!-- Admin Login Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAdminModal()">✕</button>
+            <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Admin Login</h2>
+            <div class="form-group">
+                <label for="admin-username">Username</label>
+                <input type="text" id="admin-username" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="admin-password">Password</label>
+                <input type="password" id="admin-password" placeholder="">
+            </div>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="adminLogin()">Login</button>
+        </div>
+    </div>
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-header">
+            <h2>Admin Dashboard</h2>
+            <button class="btn btn-secondary btn-sm" onclick="logoutAdmin()">Logout</button>
+        </div>
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('services')">Services</button>
+            <button class="admin-tab" onclick="switchAdminTab('products-admin')">Products</button>
+            <button class="admin-tab" onclick="switchAdminTab('prices')">Prices</button>
+            <button class="admin-tab" onclick="switchAdminTab('repairs-status')">Repair Status</button>
+            <button class="admin-tab" onclick="switchAdminTab('appointments')">Appointments</button>
+            <button class="admin-tab" onclick="switchAdminTab('orders')">Orders</button>
+        </div>
 
+        <div id="services-tab" class="admin-content show">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Services</h3>
+            <div class="service-list" id="admin-services-list"></div>
+            <button class="btn btn-primary" style="margin-top: 1rem;" onclick="addNewService()">+ Add New Service</button>
+        </div>
 
+        <div id="products-admin-tab" class="admin-content">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Products for Sale</h3>
+            <div class="service-list" id="admin-products-list"></div>
+            <button class="btn btn-primary" style="margin-top: 1rem;" onclick="addNewProduct()">+ Add New Product</button>
+        </div>
 
-            <button class="nav-toggle" onclick="toggleNav()">☰</button>
-            <div class="nav-center">
-                <ul class="nav-links">
-                    <li><a onclick="scrollToSection('services'); closeNav();" id="nav-services">Services</a></li>
-                    <li><a onclick="scrollToSection('products'); closeNav();" id="nav-products">Products</a></li>
-                    <li><a onclick="scrollToSection('repairs'); closeNav();" id="nav-repairs">My Repairs</a></li>
-                    <li><a onclick="scrollToSection('booking'); closeNav();" id="nav-booking">Book Now</a></li>
-                    <li><a onclick="scrollToSection('about'); closeNav();" id="nav-about">About</a></li>
-                    <li><a onclick="scrollToSection('contact'); closeNav();" id="nav-contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="nav-right">
-                <select class="lang-selector" id="language" onchange="changeLanguage(this.value)">
-                    <option value="en">EN</option>
-                    <option value="fr">FR</option>
-                    <option value="ar">AR</option>
-                </select>
-                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</button>
-                <button class="admin-btn" onclick="openAdminModal()">Admin</button>
-            </div>
-        </nav>
+        <div id="prices-tab" class="admin-content">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Update Prices</h3>
+            <div class="service-list" id="admin-prices-list"></div>
+        </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 id="hero-title">Phone Lab Haitem</h1>
-            <p id="hero-subtitle">Fast, Reliable Device Repair Services</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-primary" onclick="scrollToSection('services'); return false;" id="btn-explore">Explore Services</a>
-                <a href="#" class="btn btn-secondary" onclick="scrollToSection('booking'); return false;" id="btn-booking">Book Appointment</a>
-            </div>
-        </div>
-    </section>
+        <div id="repairs-status-tab" class="admin-content">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Add Device for Repair</h3>
+            <div style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                <div class="form-group">
+                    <label for="new-device-name">Device Model</label>
+                    <input type="text" id="new-device-name" placeholder="e.g., iPhone 12, Samsung S21">
+                </div>
+                <div class="form-group">
+                    <label for="new-device-customer">Customer Name</label>
+                    <input type="text" id="new-device-customer" placeholder="Enter customer name">
+                </div>
+                <button class="btn btn-primary" onclick="addRepairDevice()" style="width: 100%;">Add Device & Generate Code</button>
+            </div>
+            <h3 style="color: var(--primary); margin-bottom: 1rem; margin-top: 2rem;">Manage Repairs</h3>
+            <div class="service-list" id="admin-repairs-list"></div>
+        </div>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2 class="section-title" id="services-title">Our Services</h2>
-        <div class="services-grid" id="services-grid">
-            <!-- Services will be populated here -->
-        </div>
-    </section>
+        <div id="appointments-tab" class="admin-content">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Appointments</h3>
+            <div class="service-list" id="admin-appointments-list"></div>
+        </div>
 
-    <!-- Products Section -->
-    <section id="products" class="services">
-        <h2 class="section-title" id="products-title">Products For Sale</h2>
-        <div class="services-grid" id="products-grid">
-            <!-- Products will be populated here -->
-        </div>
-    </section>
+        <div id="orders-tab" class="admin-content">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Recent Orders</h3>
+            <p id="orders-info" style="color: #a0a0a0;">Orders will appear here. <a href="#" style="color: var(--primary);" onclick="openGoogleSheets(); return false;">View in Google Sheets</a></p>
+        </div>
+    </div>
 
-    <!-- Repair Status Section -->
-    <section id="repairs" class="services">
-        <h2 class="section-title" id="repairs-title">Check Your Repair Status</h2>
-        <div style="max-width: 600px; margin: 0 auto; background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); padding: 2rem; border-radius: 10px;">
-            <div class="form-group">
-                <label for="repair-code" id="status-code-label">Enter Receipt Code</label>
-                <input type="text" id="repair-code" placeholder="RP001" style="text-transform: uppercase; letter-spacing: 2px;">
-            </div>
-            <button class="btn btn-primary" style="width: 100%;" onclick="checkRepairStatus()" id="btn-check-status">Check Status</button>
-        </div>
-        <div id="repairs-list" style="margin-top: 2rem;">
-            <p id="no-repairs" style="text-align: center; color: #a0a0a0;">Enter a receipt code above to check your repair status</p>
-        </div>
-    </section>        <!-- Appointment Booking Section -->
-    <section id="booking" class="services">
-        <h2 class="section-title" id="booking-title">Book an Appointment</h2>
-        <div style="max-width: 600px; margin: 0 auto;">
-            <div class="contact-form">
-                <div class="form-group">
-                    <label for="appointment-date" id="label-appt-date">Preferred Date</label>
-                    <input type="date" id="appointment-date" style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); color: #e0e0e0; padding: 0.8rem; border-radius: 5px;">
-                </div>
-                <div class="form-group">
-                    <label for="appointment-service" id="label-service">Select Service</label>
-                    <select id="appointment-service" style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); color: #e0e0e0; padding: 0.8rem; border-radius: 5px;">
-                        <option>Screen Repair</option>
-                        <option>Battery Replacement</option>
-                        <option>Water Damage</option>
-                        <option>Accessories</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="appointment-name" id="label-appt-name">Name</label>
-                    <input type="text" id="appointment-name" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="appointment-phone" id="label-appt-phone">Phone</label>
-                    <input type="tel" id="appointment-phone" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="appointment-time" id="label-appt-time">Preferred Time</label>
-                    <input type="time" id="appointment-time" style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); color: #e0e0e0; padding: 0.8rem; border-radius: 5px;">
-                </div>
-                <button class="btn btn-primary" onclick="bookAppointment()" id="btn-book">Book Appointment</button>
-            </div>
-        </div>
-    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Phone Lab Haitem. All rights reserved. | <span id="footer-mission">Repair • Refurbish • Reuse • Recycle</span></p>
+    </footer>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2 id="about-title">About Us</h2>
-        <p id="about-text-1">At Phone Lab Haitem, we provide exceptional repair services for all your mobile devices and electronics. With years of expertise and proven experience, our skilled technicians handle everything from screen repairs to water damage recovery.</p>
-        <p id="about-text-2">Our mission is simple: Repair, Refurbish, Reuse, and Recycle. We are dedicated to extending the life of your devices while promoting sustainability and delivering reliable, high-quality service that protects your data and the environment.</p>
-    </section>
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                'logo-text': 'Phone Lab Haitem',
+                'nav-services': 'Services',
+                'nav-products': 'Products',
+                'nav-repairs': 'My Repairs',
+                'nav-booking': 'Book Now',
+                'nav-about': 'About',
+                'nav-contact': 'Contact',
+                'hero-title': 'Phone Lab Haitem',
+                'hero-subtitle': 'Fast, Reliable Device Repair Services',
+                'btn-explore': 'Explore Services',
+                'btn-booking': 'Book Appointment',
+                'services-title': 'Our Services',
+                'products-title': 'Products For Sale',
+                'repairs-title': 'Check Your Repair Status',
+                'booking-title': 'Book an Appointment',
+                'label-service': 'Select Service',
+                'label-appt-name': 'Name',
+                'label-appt-phone': 'Phone',
+                'label-appt-time': 'Preferred Time',
+                'btn-book': 'Book Appointment',
+                'btn-buy': 'Buy Now',
+                'about-title': 'About Us',
+                'about-text-1': 'At Phone Lab Haitem, we provide exceptional repair services for all your mobile devices and electronics. With years of expertise and proven experience, our skilled technicians handle everything from screen repairs to water damage recovery.',
+                'about-text-2': 'Our mission is simple: Repair, Refurbish, Reuse, and Recycle. We are dedicated to extending the life of your devices while promoting sustainability and delivering reliable, high-quality service that protects your data and the environment.',
+                'contact-title': 'Get In Touch',
+                'contact-address': 'Address',
+                'contact-address-text': 'Tlemcen, Tlemcen Province, Algeria',
+                'contact-phone': 'Phone',
+                'contact-phone-text': '+213 560 32 94 92 / +213 669 74 29 53',
+                'contact-email': 'Email',
+                'contact-email-text': 'Phonelab.haitem@gmail.com',
+                'whatsapp-text': 'Chat on WhatsApp',
+                'form-name': 'Name',
+                'form-email': 'Email',
+                'form-message': 'Message',
+                'btn-submit': 'Submit',
+                'footer-mission': 'Repair • Refurbish • Reuse • Recycle',
+                'service-screen': 'Screen Repair',
+                'service-screen-desc': 'Fast and reliable screen replacement with quality parts.',
+                'service-battery': 'Battery Replacement',
+                'service-battery-desc': 'Restore your device battery to full health.',
+                'service-water': 'Water Damage Repair',
+                'service-water-desc': 'Professional water damage recovery and repair.',
+                'service-accessories': 'Accessories',
+                'service-accessories-desc': 'Screen protectors, cases, chargers and more.',
+                'status-code-label': 'Enter Receipt Code',
+                'status-code-placeholder': 'Enter your receipt code to check status',
+                'btn-check-status': 'Check Status',
+                'status-not-found': 'Receipt code not found. Please check and try again.',
+                'status-code-required': 'Please enter a receipt code'
+            },
+            fr: {
+                'logo-text': 'Phone Lab Haitem',
+                'nav-services': 'Services',
+                'nav-products': 'Produits',
+                'nav-repairs': 'Mes Réparations',
+                'nav-booking': 'Réserver',
+                'nav-about': 'À propos',
+                'nav-contact': 'Contact',
+                'hero-title': 'Phone Lab Haitem',
+                'hero-subtitle': 'Services de Réparation Rapides et Fiables',
+                'btn-explore': 'Explorer les Services',
+                'btn-booking': 'Réserver une Rendez-vous',
+                'services-title': 'Nos Services',
+                'products-title': 'Produits à Vendre',
+                'repairs-title': 'Vérifier l\'État de Réparation',
+                'booking-title': 'Réserver une Rendez-vous',
+                'label-service': 'Sélectionner le Service',
+                'label-appt-name': 'Nom',
+                'label-appt-phone': 'Téléphone',
+                'label-appt-time': 'Heure Préférée',
+                'btn-book': 'Réserver',
+                'btn-buy': 'Acheter',
+                'about-title': 'À Propos',
+                'about-text-1': 'Chez Phone Lab Haitem, nous fournissons des services de réparation exceptionnels pour tous vos appareils mobiles et électroniques. Avec des années d\'expertise, nos techniciens qualifiés gèrent tout, des réparations d\'écran à la récupération des dégâts d\'eau.',
+                'about-text-2': 'Notre mission est simple: Réparer, Remettre à Neuf, Réutiliser et Recycler. Nous nous engageons à prolonger la durée de vie de vos appareils tout en promouvant la durabilité.',
+                'contact-title': 'Nous Contacter',
+                'contact-address': 'Adresse',
+                'contact-address-text': 'Tlemcen, Province de Tlemcen, Algérie',
+                'contact-phone': 'Téléphone',
+                'contact-phone-text': '+213 560 32 94 92 / +213 669 74 29 53',
+                'contact-email': 'E-mail',
+                'contact-email-text': 'Phonelab.haitem@gmail.com',
+                'whatsapp-text': 'Chatter sur WhatsApp',
+                'form-name': 'Nom',
+                'form-email': 'E-mail',
+                'form-message': 'Message',
+                'btn-submit': 'Soumettre',
+                'footer-mission': 'Réparer • Remettre à Neuf • Réutiliser • Recycler',
+                'service-screen': 'Réparation d\'Écran',
+                'service-screen-desc': 'Remplacement d\'écran rapide et fiable avec pièces de qualité.',
+                'service-battery': 'Remplacement Batterie',
+                'service-battery-desc': 'Restaurez la batterie de votre appareil.',
+                'service-water': 'Réparation Dégâts d\'Eau',
+                'service-water-desc': 'Récupération et réparation professionnelle des dégâts d\'eau.',
+                'service-accessories': 'Accessoires',
+                'service-accessories-desc': 'Protecteurs d\'écran, étuis, chargeurs et plus.',
+                'status-code-label': 'Entrez le Code de Reçu',
+                'status-code-placeholder': 'Entrez votre code de reçu pour vérifier l\'état',
+                'btn-check-status': 'Vérifier l\'État',
+                'status-not-found': 'Code de reçu non trouvé. Veuillez vérifier et réessayer.',
+                'status-code-required': 'Veuillez entrer un code de reçu'
+            },
+ar: {
+                'logo-text': 'Phone Lab Haitem',
+                'nav-services': 'الخدمات',
+                'nav-products': 'المنتجات',
+                'nav-repairs': 'إصلاحاتي',
+                'nav-booking': 'احجز الآن',
+                'nav-about': 'عننا',
+                'nav-contact': 'تواصل',
+                'hero-title': 'Phone Lab Haitem',
+                'hero-subtitle': 'خدمات إصلاح سريعة وموثوقة',
+                'btn-explore': 'استكشف الخدمات',
+                'btn-booking': 'احجز موعد',
+                'services-title': 'خدماتنا',
+                'products-title': 'المنتجات للبيع',
+                'repairs-title': 'تحقق من حالة إصلاحك',
+                'booking-title': 'احجز موعد',
+                'label-service': 'اختر الخدمة',
+                'label-appt-name': 'الاسم',
+                'label-appt-phone': 'الهاتف',
+                'label-appt-time': 'الوقت المفضل',
+                'btn-book': 'احجز الآن',
+                'btn-buy': 'شراء',
+                'about-title': 'عننا',
+                'about-text-1': 'في Phone Lab Haitem، نقدم خدمات إصلاح استثنائية لجميع أجهزتك المحمولة والإلكترونية. مع سنوات من الخبرة، يتعامل فنيونا المهرة مع كل شيء من إصلاح الشاشات إلى استرجاع الأضرار المائية.',
+                'about-text-2': 'مهمتنا بسيطة: الإصلاح والتجديد والإعادة والتدوير. نحن ملتزمون بإطالة عمر أجهزتك مع تعزيز الاستدامة.',
+                'contact-title': 'تواصل معنا',
+                'contact-address': 'العنوان',
+                'contact-address-text': 'تلمسان، ولاية تلمسان، الجزائر',
+                'contact-phone': 'الهاتف',
+                'contact-phone-text': '+213 560 32 94 92 / +213 669 74 29 53',
+                'contact-email': 'البريد الإلكتروني',
+                'contact-email-text': 'Phonelab.haitem@gmail.com',
+                'whatsapp-text': 'دردشة على WhatsApp',
+                'form-name': 'الاسم',
+                'form-email': 'البريد الإلكتروني',
+                'form-message': 'الرسالة',
+                'btn-submit': 'إرسال',
+                'footer-mission': 'إصلاح • تجديد • إعادة • تدوير',
+                'service-screen': 'إصلاح الشاشة',
+                'service-screen-desc': 'استبدال سريع وموثوق للشاشة مع قطع عالية الجودة.',
+                'service-battery': 'استبدال البطارية',
+                'service-battery-desc': 'استعد بطارية جهازك إلى صحتها الكاملة.',
+                'service-water': 'إصلاح الأضرار المائية',
+                'service-water-desc': 'استرجاع واحترافي لإصلاح الأضرار المائية.',
+                'service-accessories': 'الاكسسوارات',
+                'service-accessories-desc': 'حامي الشاشة والأغطية والشواحن والمزيد.',
+                'status-code-label': 'أدخل كود الإيصال',
+                'status-code-placeholder': 'أدخل كود الإيصال للتحقق من الحالة',
+                'btn-check-status': 'تحقق من الحالة',
+                'status-not-found': 'كود الإيصال غير موجود. يرجى التحقق والمحاولة مجددا.',
+                'status-code-required': 'يرجى إدخال كود الإيصال'
+            }
+        };
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2 class="section-title" id="contact-title">Get In Touch</h2>
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-item-icon">📍</div>
-                    <div class="contact-item-text">
-                        <h3 id="contact-address">Address</h3>
-                        <p id="contact-address-text">Tlemcen, Tlemcen Province, Algeria</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-item-icon">📞</div>
-                    <div class="contact-item-text">
-                        <h3 id="contact-phone">Phone</h3>
-                        <p id="contact-phone-text">+213 XXX XXX XXX</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-item-icon">✉️</div>
-                    <div class="contact-item-text">
-                        <h3 id="contact-email">Email</h3>
-                        <p id="contact-email-text">Phonelab.haitem@gmail.com</p>
-                    </div>
-                </div>
-                <a href="#" class="whatsapp-btn" onclick="openWhatsApp(); return false;" id="whatsapp-link">
-                    💬 <span id="whatsapp-text">Chat on WhatsApp</span>
-                </a>
-            </div>
-            <div class="contact-form">
-                <div class="form-group">
-                    <label for="name" id="form-name">Name</label>
-                    <input type="text" id="name" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="email" id="form-email">Email</label>
-                    <input type="email" id="email" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="message" id="form-message">Message</label>
-                    <textarea id="message" rows="5" placeholder=""></textarea>
-                </div>
-                <button class="btn btn-primary" onclick="submitForm()" id="btn-submit">Submit</button>
-            </div>
-        </div>
-    </section>
+        // Default Services Data (editable by admin)
+        let servicesData = [
+            { id: 1, name: 'service-screen', desc: 'service-screen-desc', price: 50, icon: '🔧', image: 'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=400' },
+            { id: 2, name: 'service-battery', desc: 'service-battery-desc', price: 30, icon: '🔋', image: 'https://images.unsplash.com/photo-1609042231409-528ae5b5e2ac?w=400' },
+            { id: 3, name: 'service-water', desc: 'service-water-desc', price: 75, icon: '💧', image: 'https://images.unsplash.com/photo-1516321318423-f06f70504c8a?w=400' },
+            { id: 4, name: 'service-accessories', desc: 'service-accessories-desc', price: 15, icon: '🛡️', image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400' }
+        ];
 
-    <!-- Admin Login Modal -->
-    <div id="adminModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeAdminModal()">✕</button>
-            <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Admin Login</h2>
-            <div class="form-group">
-                <label for="admin-username">Username</label>
-                <input type="text" id="admin-username" placeholder="">
-            </div>
-            <div class="form-group">
-                <label for="admin-password">Password</label>
-                <input type="password" id="admin-password" placeholder="">
-            </div>
-            <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="adminLogin()">Login</button>
-        </div>
-    </div>
+        let productsData = [
+            { id: 1, name: 'Screen Protector', price: 5, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400', stock: 50 },
+            { id: 2, name: 'Phone Case', price: 12, image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400', stock: 30 },
+            { id: 3, name: 'Charger Cable', price: 8, image: 'https://images.unsplash.com/photo-1609042231409-528ae5b5e2ac?w=400', stock: 45 }
+        ];
 
-    <!-- Admin Panel -->
-    <div id="adminPanel" class="admin-panel">
-        <div class="admin-header">
-            <h2>Admin Dashboard</h2>
-            <button class="btn btn-secondary btn-sm" onclick="logoutAdmin()">Logout</button>
-        </div>
-        <div class="admin-tabs">
-            <button class="admin-tab active" onclick="switchAdminTab('services')">Services</button>
-            <button class="admin-tab" onclick="switchAdminTab('products-admin')">Products</button>
-            <button class="admin-tab" onclick="switchAdminTab('prices')">Prices</button>
-            <button class="admin-tab" onclick="switchAdminTab('repairs-status')">Repair Status</button>
-            <button class="admin-tab" onclick="switchAdminTab('appointments')">Appointments</button>
-            <button class="admin-tab" onclick="switchAdminTab('orders')">Orders</button>
-        </div>
+        let repairsData = [
+            { code: 'RP001', device: 'iPhone 12', status: 'pending', date: '2025-12-05', customer: 'Guest' },
+            { code: 'RP002', device: 'Samsung S21', status: 'fixed', date: '2025-12-04', customer: 'Guest' },
+            { code: 'RP003', device: 'Galaxy A12', status: 'paid', date: '2025-12-03', customer: 'Guest' }
+        ];
 
-        <div id="services-tab" class="admin-content show">
-            <h3 style="color: var(--primary); margin-bottom: 1rem;">Services</h3>
-            <div class="service-list" id="admin-services-list"></div>
-            <button class="btn btn-primary" style="margin-top: 1rem;" onclick="addNewService()">+ Add New Service</button>
-        </div>
+        let appointmentsData = [];
 
-        <div id="products-admin-tab" class="admin-content">
-            <h3 style="color: var(--primary); margin-bottom: 1rem;">Products for Sale</h3>
-            <div class="service-list" id="admin-products-list"></div>
-            <button class="btn btn-primary" style="margin-top: 1rem;" onclick="addNewProduct()">+ Add New Product</button>
-        </div>
+        let currentLanguage = 'en';
+        let adminLoggedIn = false;
+        let isDarkMode = true;
 
-        <div id="prices-tab" class="admin-content">
-            <h3 style="color: var(--primary); margin-bottom: 1rem;">Update Prices</h3>
-            <div class="service-list" id="admin-prices-list"></div>
-        </div>
+        // Initialize
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('language') || 'en';
+            changeLanguage(savedLanguage);
+            document.getElementById('language').value = savedLanguage;
+            renderServices();
+            renderProducts();
+            loadTheme();
+        });
 
-        <div id="repairs-status-tab" class="admin-content">
-            <h3 style="color: var(--primary); margin-bottom: 1rem;">Add Device for Repair</h3>
-            <div style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-                <div class="form-group">
-                    <label for="new-device-name">Device Model</label>
-                    <input type="text" id="new-device-name" placeholder="e.g., iPhone 12, Samsung S21">
-                </div>
-                <div class="form-group">
-                    <label for="new-device-customer">Customer Name</label>
-                    <input type="text" id="new-device-customer" placeholder="Enter customer name">
-                </div>
-                <button class="btn btn-primary" onclick="addRepairDevice()" style="width: 100%;">Add Device & Generate Code</button>
-            </div>
-            <h3 style="color: var(--primary); margin-bottom: 1rem; margin-top: 2rem;">Manage Repairs</h3>
-            <div class="service-list" id="admin-repairs-list"></div>
-        </div>
+        // Language Change
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.documentElement.lang = lang;
+            
+            if (lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+            }
+            
+            const currentTranslations = translations[lang] || translations['en'];
+            
+            Object.keys(currentTranslations).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = currentTranslations[key];
+                }
+            });
+            renderServices();
+            renderProducts();
+            localStorage.setItem('language', lang);
+        }
 
-        <div id="appointments-tab" class="admin-content">
-            <h3 style="color: var(--primary); margin-bottom: 1rem;">Appointments</h3>
-            <div class="service-list" id="admin-appointments-list"></div>
-        </div>
+        // Theme Toggle
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            if (isDarkMode) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                document.querySelector('.theme-toggle').textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        }
 
-        <div id="orders-tab" class="admin-content">
-            <h3 style="color: var(--primary); margin-bottom: 1rem;">Recent Orders</h3>
-            <p id="orders-info" style="color: #a0a0a0;">Orders will appear here. <a href="#" style="color: var(--primary);" onclick="openGoogleSheets(); return false;">View in Google Sheets</a></p>
-        </div>
-    </div>
+        function loadTheme() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            if (theme === 'light') {
+                isDarkMode = false;
+                document.body.classList.add('light-mode');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+        }
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Phone Lab Haitem. All rights reserved. | <span id="footer-mission">Repair • Refurbish • Reuse • Recycle</span></p>
-    </footer>
+        // Render Services
+        function renderServices() {
+            const grid = document.getElementById('services-grid');
+            grid.innerHTML = servicesData.map(service => `
+                <div class="service-card">
+                    <img src="${service.image}" alt="service" class="product-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22%3E%3Crect fill=%22%23333%22 width=%22400%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22 fill=%22%23999%22%3EImage Loading...%3C/text%3E%3C/svg%3E'">
+                    <div class="service-icon">${service.icon}</div>
+                    <h3>${translations[currentLanguage][service.name]}</h3>
+                    <p>${translations[currentLanguage][service.desc]}</p>
+                    <div class="service-price">$${service.price}</div>
+                </div>
+            `).join('');
+        }
 
-    <script>
-        // Translations
-        const translations = {
-            en: {
-                'logo-text': 'Phone Lab Haitem',
-                'nav-services': 'Services',
-                'nav-products': 'Products',
-                'nav-repairs': 'My Repairs',
-                'nav-booking': 'Book Now',
-                'nav-about': 'About',
-                'nav-contact': 'Contact',
-                'hero-title': 'Phone Lab Haitem',
-                'hero-subtitle': 'Fast, Reliable Device Repair Services',
-                'btn-explore': 'Explore Services',
-                'btn-booking': 'Book Appointment',
-                'services-title': 'Our Services',
-                'products-title': 'Products For Sale',
-                'repairs-title': 'Check Your Repair Status',
-                'booking-title': 'Book an Appointment',
-                'label-service': 'Select Service',
-                'label-appt-name': 'Name',
-                'label-appt-phone': 'Phone',
-                'label-appt-time': 'Preferred Time',
-                'btn-book': 'Book Appointment',
-                'btn-buy': 'Buy Now',
-                'about-title': 'About Us',
-                'about-text-1': 'At Phone Lab Haitem, we provide exceptional repair services for all your mobile devices and electronics. With years of expertise and proven experience, our skilled technicians handle everything from screen repairs to water damage recovery.',
-                'about-text-2': 'Our mission is simple: Repair, Refurbish, Reuse, and Recycle. We are dedicated to extending the life of your devices while promoting sustainability and delivering reliable, high-quality service that protects your data and the environment.',
-                'contact-title': 'Get In Touch',
-                'contact-address': 'Address',
-                'contact-address-text': 'Tlemcen, Tlemcen Province, Algeria',
-                'contact-phone': 'Phone',
-                'contact-phone-text': '+213 560 32 94 92 / +213 669 74 29 53',
-                'contact-email': 'Email',
-                'contact-email-text': 'Phonelab.haitem@gmail.com',
-                'whatsapp-text': 'Chat on WhatsApp',
-                'form-name': 'Name',
-                'form-email': 'Email',
-                'form-message': 'Message',
-                'btn-submit': 'Submit',
-                'footer-mission': 'Repair • Refurbish • Reuse • Recycle',
-                'service-screen': 'Screen Repair',
-                'service-screen-desc': 'Fast and reliable screen replacement with quality parts.',
-                'service-battery': 'Battery Replacement',
-                'service-battery-desc': 'Restore your device battery to full health.',
-                'service-water': 'Water Damage Repair',
-                'service-water-desc': 'Professional water damage recovery and repair.',
-                'service-accessories': 'Accessories',
-                'service-accessories-desc': 'Screen protectors, cases, chargers and more.',
-                'status-code-label': 'Enter Receipt Code',
-                'status-code-placeholder': 'Enter your receipt code to check status',
-                'btn-check-status': 'Check Status',
-                'status-not-found': 'Receipt code not found. Please check and try again.',
-                'status-code-required': 'Please enter a receipt code'
-            },
-            fr: {
-                'logo-text': 'Phone Lab Haitem',
-                'nav-services': 'Services',
-                'nav-products': 'Produits',
-                'nav-repairs': 'Mes Réparations',
-                'nav-booking': 'Réserver',
-                'nav-about': 'À propos',
-                'nav-contact': 'Contact',
-                'hero-title': 'Phone Lab Haitem',
-                'hero-subtitle': 'Services de Réparation Rapides et Fiables',
-                'btn-explore': 'Explorer les Services',
-                'btn-booking': 'Réserver une Rendez-vous',
-                'services-title': 'Nos Services',
-                'products-title': 'Produits à Vendre',
-                'repairs-title': 'Vérifier l\'État de Réparation',
-                'booking-title': 'Réserver une Rendez-vous',
-                'label-service': 'Sélectionner le Service',
-                'label-appt-name': 'Nom',
-                'label-appt-phone': 'Téléphone',
-                'label-appt-time': 'Heure Préférée',
-                'btn-book': 'Réserver',
-                'btn-buy': 'Acheter',
-                'about-title': 'À Propos',
-                'about-text-1': 'Chez Phone Lab Haitem, nous fournissons des services de réparation exceptionnels pour tous vos appareils mobiles et électroniques. Avec des années d\'expertise, nos techniciens qualifiés gèrent tout, des réparations d\'écran à la récupération des dégâts d\'eau.',
-                'about-text-2': 'Notre mission est simple: Réparer, Remettre à Neuf, Réutiliser et Recycler. Nous nous engageons à prolonger la durée de vie de vos appareils tout en promouvant la durabilité.',
-                'contact-title': 'Nous Contacter',
-                'contact-address': 'Adresse',
-                'contact-address-text': 'Tlemcen, Province de Tlemcen, Algérie',
-                'contact-phone': 'Téléphone',
-                'contact-phone-text': '+213 560 32 94 92 / +213 669 74 29 53',
-                'contact-email': 'E-mail',
-                'contact-email-text': 'Phonelab.haitem@gmail.com',
-                'whatsapp-text': 'Chatter sur WhatsApp',
-                'form-name': 'Nom',
-                'form-email': 'E-mail',
-                'form-message': 'Message',
-                'btn-submit': 'Soumettre',
-                'footer-mission': 'Réparer • Remettre à Neuf • Réutiliser • Recycler',
-                'service-screen': 'Réparation d\'Écran',
-                'service-screen-desc': 'Remplacement d\'écran rapide et fiable avec pièces de qualité.',
-                'service-battery': 'Remplacement Batterie',
-                'service-battery-desc': 'Restaurez la batterie de votre appareil.',
-                'service-water': 'Réparation Dégâts d\'Eau',
-                'service-water-desc': 'Récupération et réparation professionnelle des dégâts d\'eau.',
-                'service-accessories': 'Accessoires',
-                'service-accessories-desc': 'Protecteurs d\'écran, étuis, chargeurs et plus.',
-                'status-code-label': 'Entrez le Code de Reçu',
-                'status-code-placeholder': 'Entrez votre code de reçu pour vérifier l\'état',
-                'btn-check-status': 'Vérifier l\'État',
-                'status-not-found': 'Code de reçu non trouvé. Veuillez vérifier et réessayer.',
-                'status-code-required': 'Veuillez entrer un code de reçu'
-            },
-            ar: {
-                'logo-text': 'Phone Lab Haitem',
-                'nav-services': 'الخدمات',
-                'nav-products': 'المنتجات',
-                'nav-repairs': 'إصلاحاتي',
-                'nav-booking': 'احجز الآن',
-                'nav-about': 'عننا',
-                'nav-contact': 'تواصل',
-                'hero-title': 'Phone Lab Haitem',
-                'hero-subtitle': 'خدمات إصلاح سريعة وموثوقة',
-                'btn-explore': 'استكشف الخدمات',
-                'btn-booking': 'احجز موعد',
-                'services-title': 'خدماتنا',
-                'products-title': 'المنتجات للبيع',
-                'repairs-title': 'تحقق من حالة إصلاحك',
-                'booking-title': 'احجز موعد',
-                'label-service': 'اختر الخدمة',
-                'label-appt-name': 'الاسم',
-                'label-appt-phone': 'الهاتف',
-                'label-appt-time': 'الوقت المفضل',
-                'btn-book': 'احجز الآن',
-                'btn-buy': 'شراء',
-                'about-title': 'عننا',
-                'about-text-1': 'في Phone Lab Haitem، نقدم خدمات إصلاح استثنائية لجميع أجهزتك المحمولة والإلكترونية. مع سنوات من الخبرة، يتعامل فنيونا المهرة مع كل شيء من إصلاح الشاشات إلى استرجاع الأضرار المائية.',
-                'about-text-2': 'مهمتنا بسيطة: الإصلاح والتجديد والإعادة والتدوير. نحن ملتزمون بإطالة عمر أجهزتك مع تعزيز الاستدامة.',
-                'contact-title': 'تواصل معنا',
-                'contact-address': 'العنوان',
-                'contact-address-text': 'تلمسان، ولاية تلمسان، الجزائر',
-                'contact-phone': 'الهاتف',
-                'contact-phone-text': '+213 560 32 94 92 / +213 669 74 29 53',
-                'contact-email': 'البريد الإلكتروني',
-                'contact-email-text': 'Phonelab.haitem@gmail.com',
-                'whatsapp-text': 'دردشة على WhatsApp',
-                'form-name': 'الاسم',
-                'form-email': 'البريد الإلكتروني',
-                'form-message': 'الرسالة',
-                'btn-submit': 'إرسال',
-                'footer-mission': 'إصلاح • تجديد • إعادة • تدوير',
-                'service-screen': 'إصلاح الشاشة',
-                'service-screen-desc': 'استبدال سريع وموثوق للشاشة مع قطع عالية الجودة.',
-                'service-battery': 'استبدال البطارية',
-                'service-battery-desc': 'استعد بطارية جهازك إلى صحتها الكاملة.',
-                'service-water': 'إصلاح الأضرار المائية',
-                'service-water-desc': 'استرجاع واحترافي لإصلاح الأضرار المائية.',
-                'service-accessories': 'الاكسسوارات',
-                'service-accessories-desc': 'حامي الشاشة والأغطية والشواحن والمزيد.',
-                'status-code-label': 'أدخل كود الإيصال',
-                'status-code-placeholder': 'أدخل كود الإيصال للتحقق من الحالة',
-                'btn-check-status': 'تحقق من الحالة',
-                'status-not-found': 'كود الإيصال غير موجود. يرجى التحقق والمحاولة مجددا.',
-                'status-code-required': 'يرجى إدخال كود الإيصال'
-            }
-        };
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = productsData.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22%3E%3Crect fill=%22%23333%22 width=%22400%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22 fill=%22%23999%22%3EImage Loading...%3C/text%3E%3C/svg%3E'">
+                    <h3>${product.name}</h3>
+                    <div class="product-price">$${product.price}</div>
+                    <p style="color: #a0a0a0; font-size: 0.9rem;">Stock: ${product.stock}</p>
+                    <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">${translations[currentLanguage]['btn-buy'] || 'Buy Now'}</button>
+                </div>
+            `).join('');
+        }
 
-        // Default Services Data (editable by admin)
-        let servicesData = [
-            { id: 1, name: 'service-screen', desc: 'service-screen-desc', price: 50, icon: '🔧', image: 'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=400' },
-            { id: 2, name: 'service-battery', desc: 'service-battery-desc', price: 30, icon: '🔋', image: 'https://images.unsplash.com/photo-1609042231409-528ae5b5e2ac?w=400' },
-            { id: 3, name: 'service-water', desc: 'service-water-desc', price: 75, icon: '💧', image: 'https://images.unsplash.com/photo-1516321318423-f06f70504c8a?w=400' },
-            { id: 4, name: 'service-accessories', desc: 'service-accessories-desc', price: 15, icon: '🛡️', image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400' }
-        ];
+        // Render Repair Status
+        function renderRepairs(repairToShow = null) {
+            const repairsList = document.getElementById('repairs-list');
+            if (!repairToShow) {
+                repairsList.innerHTML = '<p id="no-repairs" style="text-align: center; color: #a0a0a0;">Enter a receipt code above to check your repair status</p>';
+                return;
+            }
+            repairsList.innerHTML = `
+                <div class="repair-item">
+                    <div class="repair-header">
+                        <div class="repair-details">
+                            <div class="repair-id">${repairToShow.code}</div>
+                            <div class="repair-device">${repairToShow.device}</div>
+                            <div class="repair-device" style="color: #b0b0b0; margin-top: 0.5rem; font-size: 0.9rem;">Customer: ${repairToShow.customer}</div>
+                        </div>
+                        <span class="status-badge status-${repairToShow.status}">${repairToShow.status.toUpperCase()}</span>
+                    </div>
+                    <div class="repair-timeline">
+                        <div class="timeline-step">
+                            <div class="timeline-dot ${repairToShow.status === 'pending' || repairToShow.status === 'fixed' || repairToShow.status === 'paid' ? 'active' : ''}">📍</div>
+                            <div class="timeline-label">Received</div>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot ${repairToShow.status === 'fixed' || repairToShow.status === 'paid' ? 'active' : ''}">🔧</div>
+                            <div class="timeline-label">In Progress</div>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot ${repairToShow.status === 'fixed' || repairToShow.status === 'paid' ? 'active' : ''}">✓</div>
+                            <div class="timeline-label">Fixed</div>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot ${repairToShow.status === 'paid' ? 'active' : ''}">💰</div>
+                            <div class="timeline-label">Paid</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
-        let productsData = [
-            { id: 1, name: 'Screen Protector', price: 5, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400', stock: 50 },
-            { id: 2, name: 'Phone Case', price: 12, image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400', stock: 30 },
-            { id: 3, name: 'Charger Cable', price: 8, image: 'https://images.unsplash.com/photo-1609042231409-528ae5b5e2ac?w=400', stock: 45 }
-        ];
-
-        let repairsData = [
-            { code: 'RP001', device: 'iPhone 12', status: 'pending', date: '2025-12-05', customer: 'Guest' },
-            { code: 'RP002', device: 'Samsung S21', status: 'fixed', date: '2025-12-04', customer: 'Guest' },
-            { code: 'RP003', device: 'Galaxy A12', status: 'paid', date: '2025-12-03', customer: 'Guest' }
-        ];
-
-        let appointmentsData = [];
-
-        let currentLanguage = 'en';
-        let adminLoggedIn = false;
-        let isDarkMode = true;
-
-        // Initialize
-        window.addEventListener('DOMContentLoaded', function() {
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            changeLanguage(savedLanguage);
-            document.getElementById('language').value = savedLanguage;
-            renderServices();
-            renderProducts();
-            loadTheme();
-        });
-
-        // Language Change
-        function changeLanguage(lang) {
-            currentLanguage = lang;
-            document.documentElement.lang = lang;
-            
-            if (lang === 'ar') {
-                document.documentElement.dir = 'rtl';
-            } else {
-                document.documentElement.dir = 'ltr';
-            }
-            
-            const currentTranslations = translations[lang] || translations['en'];
-            
-            Object.keys(currentTranslations).forEach(key => {
-                const element = document.getElementById(key);
-                if (element) {
-                    element.textContent = currentTranslations[key];
-                }
-            });
-            
-            renderServices();
-            renderProducts();
-            localStorage.setItem('language', lang);
+        function checkRepairStatus() {
+            const code = document.getElementById('repair-code').value.trim().toUpperCase();
+            
+            if (!code) {
+                alert(translations[currentLanguage]['status-code-required']);
+                return;
+            }
+            
+            const repair = repairsData.find(r => r.code === code);
+            
+            if (repair) {
+                renderRepairs(repair);
+                showNotification(`✓ ${translations[currentLanguage]['btn-check-status']}`);
+            } else {renderRepairs(null);
+                showNotification('❌ ' + translations[currentLanguage]['status-not-found']);
+                alert(translations[currentLanguage]['status-not-found']);
+            }
         }
-
-        // Theme Toggle
-        function toggleTheme() {
-            isDarkMode = !isDarkMode;
-            const body = document.body;
-            if (isDarkMode) {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-                document.querySelector('.theme-toggle').textContent = '🌙';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                document.querySelector('.theme-toggle').textContent = '☀️';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        function loadTheme() {
-            const theme = localStorage.getItem('theme') || 'dark';
-            if (theme === 'light') {
-                isDarkMode = false;
-                document.body.classList.add('light-mode');
-                document.querySelector('.theme-toggle').textContent = '☀️';
-            }
-        }
-
-        // Render Services
-        function renderServices() {
-            const grid = document.getElementById('services-grid');
-            grid.innerHTML = servicesData.map(service => `
-                <div class="service-card">
-                    <img src="${service.image}" alt="service" class="product-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22%3E%3Crect fill=%22%23333%22 width=%22400%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22 fill=%22%23999%22%3EImage Loading...%3C/text%3E%3C/svg%3E'">
-                    <div class="service-icon">${service.icon}</div>
-                    <h3>${translations[currentLanguage][service.name]}</h3>
-                    <p>${translations[currentLanguage][service.desc]}</p>
-                    <div class="service-price">$${service.price}</div>
-                </div>
-            `).join('');
-        }
-
-        // Render Products
-        function renderProducts() {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = productsData.map(product => `
-                <div class="product-card">
-                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22%3E%3Crect fill=%22%23333%22 width=%22400%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-size=%2220%22 fill=%22%23999%22%3EImage Loading...%3C/text%3E%3C/svg%3E'">
-                    <h3>${product.name}</h3>
-                    <div class="product-price">$${product.price}</div>
-                    <p style="color: #a0a0a0; font-size: 0.9rem;">Stock: ${product.stock}</p>
-                    <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">${translations[currentLanguage]['btn-buy'] || 'Buy Now'}</button>
-                </div>
-            `).join('');
-        }
-
-        // Render Repair Status
-        function renderRepairs(repairToShow = null) {
-            const repairsList = document.getElementById('repairs-list');
-            if (!repairToShow) {
-                repairsList.innerHTML = '<p id="no-repairs" style="text-align: center; color: #a0a0a0;">Enter a receipt code above to check your repair status</p>';
-                return;
-            }
-            repairsList.innerHTML = `
-                <div class="repair-item">
-                    <div class="repair-header">
-                        <div class="repair-details">
-                            <div class="repair-id">${repairToShow.code}</div>
-                            <div class="repair-device">${repairToShow.device}</div>
-                            <div class="repair-device" style="color: #b0b0b0; margin-top: 0.5rem; font-size: 0.9rem;">Customer: ${repairToShow.customer}</div>
-                        </div>
-                        <span class="status-badge status-${repairToShow.status}">${repairToShow.status.toUpperCase()}</span>
-                    </div>
-                    <div class="repair-timeline">
-                        <div class="timeline-step">
-                            <div class="timeline-dot ${repairToShow.status === 'pending' || repairToShow.status === 'fixed' || repairToShow.status === 'paid' ? 'active' : ''}">📍</div>
-                            <div class="timeline-label">Received</div>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-step">
-                            <div class="timeline-dot ${repairToShow.status === 'fixed' || repairToShow.status === 'paid' ? 'active' : ''}">🔧</div>
-                            <div class="timeline-label">In Progress</div>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-step">
-                            <div class="timeline-dot ${repairToShow.status === 'fixed' || repairToShow.status === 'paid' ? 'active' : ''}">✓</div>
-                            <div class="timeline-label">Fixed</div>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-step">
-                            <div class="timeline-dot ${repairToShow.status === 'paid' ? 'active' : ''}">💰</div>
-                            <div class="timeline-label">Paid</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function checkRepairStatus() {
-            const code = document.getElementById('repair-code').value.trim().toUpperCase();
-            
-            if (!code) {
-                alert(translations[currentLanguage]['status-code-required']);
-                return;
-            }
-            
-            const repair = repairsData.find(r => r.code === code);
-            
-            if (repair) {
-                renderRepairs(repair);
-                showNotification(`✓ ${translations[currentLanguage]['btn-check-status']}`);
-            } else {
-                renderRepairs(null);
-                showNotification('❌ ' + translations[currentLanguage]['status-not-found']);
-                alert(translations[currentLanguage]['status-not-found']);
-            }
-        }
-
-        function addRepairDevice() {
+                    function addRepairDevice() {
             const deviceName = document.getElementById('new-device-name').value.trim();
             const customerName = document.getElementById('new-device-customer').value.trim();
             
@@ -2419,395 +1713,397 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             }
             
             // Generate repair code based on numerical order
-            const nextNumber = String(repairsData.length + 1).padStart(3, '0');
-            const repairCode = `RP${nextNumber}`;
-            
-            // Add new repair
-            repairsData.push({
-                code: repairCode,
-                device: deviceName,
-                status: 'pending',
-                date: new Date().toISOString().split('T')[0],
-                customer: customerName
-            });
-            
-            // Clear inputs
-            document.getElementById('new-device-name').value = '';
-            document.getElementById('new-device-customer').value = '';
-            
-            // Reload admin panel
-            loadAdminPanel();
-            showNotification(`✓ Device added with code: ${repairCode}`);
-        }
+                    
+    const nextNumber = String(repairsData.length + 1).padStart(3, '0');
+            const repairCode = `RP${nextNumber}`;
+            
+            // Add new repair
+            repairsData.push({
+                code: repairCode,
+                device: deviceName,
+                status: 'pending',
+                date: new Date().toISOString().split('T')[0],
+                customer: customerName
+            });
+            
+            // Clear inputs
+            document.getElementById('new-device-name').value = '';
+            document.getElementById('new-device-customer').value = '';
+            
+            // Reload admin panel
+            loadAdminPanel();
+            showNotification(`✓ Device added with code: ${repairCode}`);
+        }
 
-        function updateRepairStatus(code, status) {
-            const repair = repairsData.find(r => r.code === code);
-            if (repair) {
-                repair.status = status;
-                renderRepairs();
-                sendEmailNotification(`Repair ${code} status updated to ${status}`);
-                showNotification('Status updated and notification sent!');
-            }
-        }
+        function updateRepairStatus(code, status) {
+            const repair = repairsData.find(r => r.code === code);
+            if (repair) {
+                repair.status = status;
+                renderRepairs();
+                sendEmailNotification(`Repair ${code} status updated to ${status}`);
+                showNotification('Status updated and notification sent!');
+            }
+        }
 
-        function deleteRepair(code) {
-            if (confirm('Are you sure?')) {
-                repairsData = repairsData.filter(r => r.code !== code);
-                loadAdminPanel();
-                renderRepairs();
-            }
-        }
+        function deleteRepair(code) {
+            if (confirm('Are you sure?')) {
+                repairsData = repairsData.filter(r => r.code !== code);
+                loadAdminPanel();
+                renderRepairs();
+            }
+        }
 
-        // Navigation Toggle
-        function toggleNav() {
-            const links = document.querySelector('.nav-links');
-            links.classList.toggle('show');
-        }
+        // Navigation Toggle
+        function toggleNav() {
+            const links = document.querySelector('.nav-links');
+            links.classList.toggle('show');
+        }
 
-        function closeNav() {
-            const links = document.querySelector('.nav-links');
-            links.classList.remove('show');
-        }
+        function closeNav() {
+            const links = document.querySelector('.nav-links');
+            links.classList.remove('show');
+        }
 
-        // Scroll to Section
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+        // Scroll to Section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
 
-        // WhatsApp Integration
-        function openWhatsApp() {
-            const phoneNumber = '+213560329492'; // Replace with actual number
-            const message = encodeURIComponent('Hello, I need device repair services.');
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-        }
+        // WhatsApp Integration
+        function openWhatsApp() {
+            const phoneNumber = '+213560329492'; // Replace with actual number
+            const message = encodeURIComponent('Hello, I need device repair services.');
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
 
-        // Admin Functions
-        function openAdminModal() {
-            document.getElementById('adminModal').classList.add('show');
-        }
+        // Admin Functions
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.add('show');
+        }
 
-        function closeAdminModal() {
-            document.getElementById('adminModal').classList.remove('show');
-        }
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.remove('show');
+        }
 
-        function adminLogin() {
-    const email = document.getElementById('admin-username').value;
-    const password = document.getElementById('admin-password').value;
-    
-    firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            adminLoggedIn = true;
-            closeAdminModal();
-            document.getElementById('adminPanel').classList.add('show');
-            document.getElementById('services').style.display = 'none';
-            document.getElementById('about').style.display = 'none';
-            document.getElementById('contact').style.display = 'none';
-            loadAdminPanel();
-            showNotification('✓ Logged in successfully');
-        })
-        .catch((error) => {
-            showNotification('❌ ' + error.message);
-        });
+        function adminLogin() {
+    const email = document.getElementById('admin-username').value;
+    const password = document.getElementById('admin-password').value;
+    
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            adminLoggedIn = true;
+            closeAdminModal();
+            document.getElementById('adminPanel').classList.add('show');
+            document.getElementById('services').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('contact').style.display = 'none';
+            loadAdminPanel();
+            showNotification('✓ Logged in successfully');
+        })
+        .catch((error) => {
+            showNotification('❌ ' + error.message);
+        });
 }
 
 
-        function logoutAdmin() {
-    adminLoggedIn = false;
-    document.getElementById('adminPanel').classList.remove('show');
-    document.getElementById('hero').style.display = 'flex';
-    document.getElementById('services').style.display = 'block';
-    document.getElementById('products').style.display = 'block';
-    document.getElementById('repairs').style.display = 'block';
-    document.getElementById('booking').style.display = 'block';
-    document.getElementById('about').style.display = 'block';
-    document.getElementById('contact').style.display = 'block';
-    document.getElementById('admin-username').value = '';
-    document.getElementById('admin-password').value = '';
-    showNotification('✓ Logged out successfully');
+        function logoutAdmin() {
+    adminLoggedIn = false;
+    document.getElementById('adminPanel').classList.remove('show');
+    document.getElementById('hero').style.display = 'flex';
+    document.getElementById('services').style.display = 'block';
+    document.getElementById('products').style.display = 'block';
+    document.getElementById('repairs').style.display = 'block';
+    document.getElementById('booking').style.display = 'block';
+    document.getElementById('about').style.display = 'block';
+    document.getElementById('contact').style.display = 'block';
+    document.getElementById('admin-username').value = '';
+    document.getElementById('admin-password').value = '';
+    showNotification('✓ Logged out successfully');
 }
 
 
-        function loadAdminPanel() {
-            const adminServicesList = document.getElementById('admin-services-list');
-            adminServicesList.innerHTML = servicesData.map(service => `
-                <div class="service-item">
-                    <div class="service-item-info">
-                        <input type="text" value="${translations[currentLanguage][service.name]}" placeholder="Service Name">
-                        <input type="text" value="${translations[currentLanguage][service.desc]}" placeholder="Description">
-                        <input type="number" value="${service.price}" placeholder="Price">
-                        <input type="text" value="${service.image}" placeholder="Image URL">
-                    </div>
-                    <div class="service-item-actions">
-                        <button class="btn btn-primary btn-sm" onclick="saveService(${service.id})">Save</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteService(${service.id})">Delete</button>
-                    </div>
-                </div>
-            `).join('');
+        function loadAdminPanel() {
+            const adminServicesList = document.getElementById('admin-services-list');
+            adminServicesList.innerHTML = servicesData.map(service => `
+                <div class="service-item">
+                    <div class="service-item-info">
+                        <input type="text" value="${translations[currentLanguage][service.name]}" placeholder="Service Name">
+                        <input type="text" value="${translations[currentLanguage][service.desc]}" placeholder="Description">
+                        <input type="number" value="${service.price}" placeholder="Price">
+                        <input type="text" value="${service.image}" placeholder="Image URL">
+                    </div>
+                    <div class="service-item-actions">
+                        <button class="btn btn-primary btn-sm" onclick="saveService(${service.id})">Save</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteService(${service.id})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
 
-            const adminProductsList = document.getElementById('admin-products-list');
-            adminProductsList.innerHTML = productsData.map(product => `
-                <div class="service-item">
-                    <div class="service-item-info">
-                        <input type="text" value="${product.name}" placeholder="Product Name" id="prod-name-${product.id}">
-                        <input type="number" value="${product.price}" placeholder="Price" id="prod-price-${product.id}">
-                        <input type="number" value="${product.stock}" placeholder="Stock" id="prod-stock-${product.id}">
-                        <input type="text" value="${product.image}" placeholder="Image URL" id="prod-image-${product.id}">
-                    </div>
-                    <div class="service-item-actions">
-                        <button class="btn btn-primary btn-sm" onclick="saveProduct(${product.id})">Save</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteProduct(${product.id})">Delete</button>
-                    </div>
-                </div>
-            `).join('');
+            const adminProductsList = document.getElementById('admin-products-list');
+            adminProductsList.innerHTML = productsData.map(product => `
+                <div class="service-item">
+                    <div class="service-item-info">
+                        <input type="text" value="${product.name}" placeholder="Product Name" id="prod-name-${product.id}">
+                        <input type="number" value="${product.price}" placeholder="Price" id="prod-price-${product.id}">
+                        <input type="number" value="${product.stock}" placeholder="Stock" id="prod-stock-${product.id}">
+                        <input type="text" value="${product.image}" placeholder="Image URL" id="prod-image-${product.id}">
+                    </div>
+                    <div class="service-item-actions">
+                        <button class="btn btn-primary btn-sm" onclick="saveProduct(${product.id})">Save</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteProduct(${product.id})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
 
-            const adminRepairsList = document.getElementById('admin-repairs-list');
-            adminRepairsList.innerHTML = repairsData.map((repair, index) => `
-                <div class="service-item">
-                    <div class="repair-details">
-                        <strong>${repair.code} - ${repair.device}</strong>
-                        <p style="color: #a0a0a0; margin: 0.5rem 0 0 0;">Customer: ${repair.customer}</p>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <select id="status-${repair.code}" onchange="updateRepairStatus('${repair.code}', this.value)" style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); color: #e0e0e0; padding: 0.5rem; border-radius: 5px;">
-                            <option value="pending" ${repair.status === 'pending' ? 'selected' : ''}>Pending</option>
-                            <option value="fixed" ${repair.status === 'fixed' ? 'selected' : ''}>Fixed</option>
-                            <option value="paid" ${repair.status === 'paid' ? 'selected' : ''}>Paid</option>
-                        </select>
-                        <button class="btn btn-danger btn-sm" onclick="deleteRepair('${repair.code}')">Delete</button>
-                    </div>
-                </div>
-            `).join('');
+            const adminRepairsList = document.getElementById('admin-repairs-list');
+            adminRepairsList.innerHTML = repairsData.map((repair, index) => `
+                <div class="service-item">
+                    <div class="repair-details">
+                        <strong>${repair.code} - ${repair.device}</strong>
+                        <p style="color: #a0a0a0; margin: 0.5rem 0 0 0;">Customer: ${repair.customer}</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <select id="status-${repair.code}" onchange="updateRepairStatus('${repair.code}', this.value)" style="background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.2); color: #e0e0e0; padding: 0.5rem; border-radius: 5px;">
+                            <option value="pending" ${repair.status === 'pending' ? 'selected' : ''}>Pending</option>
+                            <option value="fixed" ${repair.status === 'fixed' ? 'selected' : ''}>Fixed</option>
+                            <option value="paid" ${repair.status === 'paid' ? 'selected' : ''}>Paid</option>
+                        </select>
+                        <button class="btn btn-danger btn-sm" onclick="deleteRepair('${repair.code}')">Delete</button>
+                    </div>
+                </div>
+            `).join('');
 
-            const adminAppointmentsList = document.getElementById('admin-appointments-list');
-            adminAppointmentsList.innerHTML = appointmentsData.length === 0 ? 
-                '<p style="color: #a0a0a0;">No appointments booked yet.</p>' :
-                appointmentsData.map(apt => `
-                <div class="service-item">
-                    <div class="repair-details">
-                        <strong>${apt.name}</strong>
-                        <p style="color: #a0a0a0; margin: 0.5rem 0 0 0;">${apt.service} | ${apt.date} at ${apt.time}</p>
-                        <p style="color: #a0a0a0; margin: 0.5rem 0 0 0;">Phone: ${apt.phone}</p>
-                    </div>
-                </div>
-            `).join('');
+            const adminAppointmentsList = document.getElementById('admin-appointments-list');
+            adminAppointmentsList.innerHTML = appointmentsData.length === 0 ? 
+                '<p style="color: #a0a0a0;">No appointments booked yet.</p>' :
+                appointmentsData.map(apt => `
+                <div class="service-item">
+                    <div class="repair-details">
+                        <strong>${apt.name}</strong>
+                        <p style="color: #a0a0a0; margin: 0.5rem 0 0 0;">${apt.service} | ${apt.date} at ${apt.time}</p>
+                        <p style="color: #a0a0a0; margin: 0.5rem 0 0 0;">Phone: ${apt.phone}</p>
+                    </div>
+                </div>
+            `).join('');
 
-            const adminPricesList = document.getElementById('admin-prices-list');
-            adminPricesList.innerHTML = servicesData.map(service => `
-                <div class="service-item">
-                    <div>
-                        <strong>${translations[currentLanguage][service.name]}</strong>
-                        <p style="color: #a0a0a0; margin: 0;">Current: $${service.price}</p>
-                    </div>
-                    <div class="service-item-info" style="flex: 1;">
-                        <input type="number" id="price-${service.id}" value="${service.price}" placeholder="New Price">
-                    </div>
-                    <button class="btn btn-primary btn-sm" onclick="updatePrice(${service.id})">Update</button>
-                </div>
-            `).join('');
-        }
+            const adminPricesList = document.getElementById('admin-prices-list');
+            adminPricesList.innerHTML = servicesData.map(service => `
+                <div class="service-item">
+                    <div>
+                        <strong>${translations[currentLanguage][service.name]}</strong>
+                        <p style="color: #a0a0a0; margin: 0;">Current: $${service.price}</p>
+                    </div>
+                    <div class="service-item-info" style="flex: 1;">
+                        <input type="number" id="price-${service.id}" value="${service.price}" placeholder="New Price">
+                    </div>
+                    <button class="btn btn-primary btn-sm" onclick="updatePrice(${service.id})">Update</button>
+                </div>
+            `).join('');
+        }
 
-        function saveService(id) {
-            alert('Service updated and synced to Google Sheets!');
-        }
+        function saveService(id) {
+            alert('Service updated and synced to Google Sheets!');
+        }
 
-        function deleteService(id) {
-            if (confirm('Are you sure?')) {
-                servicesData = servicesData.filter(s => s.id !== id);
-                loadAdminPanel();
-                renderServices();
-            }
-        }
+        function deleteService(id) {
+            if (confirm('Are you sure?')) {
+                servicesData = servicesData.filter(s => s.id !== id);
+                loadAdminPanel();
+                renderServices();
+            }
+        }
 
-        function updatePrice(id) {
-            const newPrice = document.getElementById(`price-${id}`).value;
-            const service = servicesData.find(s => s.id === id);
-            if (service) {
-                service.price = newPrice;
-                alert('Price updated!');
-                renderServices();
-                loadAdminPanel();
-            }
-        }
+        function updatePrice(id) {
+            const newPrice = document.getElementById(`price-${id}`).value;
+            const service = servicesData.find(s => s.id === id);
+            if (service) {
+                service.price = newPrice;
+                alert('Price updated!');
+                renderServices();
+                loadAdminPanel();
+            }
+        }
 
-        function addNewService() {
-            const newId = Math.max(...servicesData.map(s => s.id)) + 1;
-            servicesData.push({
-                id: newId,
-                name: 'new-service',
-                desc: 'new-desc',
-                price: 0,
-                icon: '⚙️',
-                image: 'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=400'
-            });
-            loadAdminPanel();
-            showNotification('New service added!');
-        }
+        function addNewService() {
+            const newId = Math.max(...servicesData.map(s => s.id)) + 1;
+            servicesData.push({
+                id: newId,
+                name: 'new-service',
+                desc: 'new-desc',
+                price: 0,
+                icon: '⚙️',
+                image: 'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=400'
+            });
+            loadAdminPanel();
+            showNotification('New service added!');
+        }
 
-        function addNewProduct() {
-            const newId = Math.max(...productsData.map(p => p.id)) + 1;
-            productsData.push({
-                id: newId,
-                name: 'New Product',
-                price: 0,
-                image: 'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=400',
-                stock: 0
-            });
-            loadAdminPanel();
-            showNotification('New product added!');
-        }
+        function addNewProduct() {
+            const newId = Math.max(...productsData.map(p => p.id)) + 1;
+            productsData.push({
+                id: newId,
+                name: 'New Product',
+                price: 0,
+                image: 'https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=400',
+                stock: 0
+            });
+            loadAdminPanel();
+            showNotification('New product added!');
+        }
 
-        function saveProduct(id) {
-            const product = productsData.find(p => p.id === id);
-            if (product) {
-                product.name = document.getElementById(`prod-name-${id}`).value;
-                product.price = document.getElementById(`prod-price-${id}`).value;
-                product.stock = document.getElementById(`prod-stock-${id}`).value;
-                product.image = document.getElementById(`prod-image-${id}`).value;
-                renderProducts();
-                showNotification('Product saved and synced!');
-            }
-        }
+        function saveProduct(id) {
+            const product = productsData.find(p => p.id === id);
+            if (product) {
+                product.name = document.getElementById(`prod-name-${id}`).value;
+                product.price = document.getElementById(`prod-price-${id}`).value;
+                product.stock = document.getElementById(`prod-stock-${id}`).value;
+                product.image = document.getElementById(`prod-image-${id}`).value;
+                renderProducts();
+                showNotification('Product saved and synced!');
+            }
+        }
 
-        function deleteProduct(id) {
-            if (confirm('Are you sure?')) {
-                productsData = productsData.filter(p => p.id !== id);
-                loadAdminPanel();
-                renderProducts();
-            }
-        }
+        function deleteProduct(id) {
+            if (confirm('Are you sure?')) {
+                productsData = productsData.filter(p => p.id !== id);
+                loadAdminPanel();
+                renderProducts();
+            }
+        }
 
-        function updateRepairStatus(id, status) {
-            const repair = repairsData.find(r => r.id === id);
-            if (repair) {
-                repair.status = status;
-                renderRepairs();
-                sendEmailNotification(`Repair ${id} status updated to ${status}`);
-                showNotification('Status updated and notification sent!');
-            }
-        }
+        function updateRepairStatus(id, status) {
+            const repair = repairsData.find(r => r.id === id);
+            if (repair) {
+                repair.status = status;
+                renderRepairs();
+                sendEmailNotification(`Repair ${id} status updated to ${status}`);
+                showNotification('Status updated and notification sent!');
+            }
+        }
 
-        function deleteRepair(id) {
-            if (confirm('Are you sure?')) {
-                repairsData = repairsData.filter(r => r.id !== id);
-                loadAdminPanel();
-                renderRepairs();
-            }
-        }
+        function deleteRepair(id) {
+            if (confirm('Are you sure?')) {
+                repairsData = repairsData.filter(r => r.id !== id);
+                loadAdminPanel();
+                renderRepairs();
+            }
+        }
 
-        function bookAppointment() {
-            const date = document.getElementById('appointment-date').value;
-            const service = document.getElementById('appointment-service').value;
-            const name = document.getElementById('appointment-name').value;
-            const phone = document.getElementById('appointment-phone').value;
-            const time = document.getElementById('appointment-time').value;
-            
-            if (service && name && phone && time && date) {
-                const appointment = {
-                    id: appointmentsData.length + 1,
-                    service,
-                    name,
-                    phone,
-                    date: date,
-                    time
-                };
-                appointmentsData.push(appointment);
-                
-                document.getElementById('appointment-date').value = '';
-                document.getElementById('appointment-service').value = '';
-                document.getElementById('appointment-name').value = '';
-                document.getElementById('appointment-phone').value = '';
-                document.getElementById('appointment-time').value = '';
-                
-                showNotification('✓ Appointment booked! Check your WhatsApp for confirmation.');
-                sendEmailNotification(`New appointment booked: ${name} on ${appointment.date} at ${time}`);
-                
-                setTimeout(() => scrollToSection('services'), 1500);
-            } else {
-                alert('Please fill all fields');
-            }
-        }
+        function bookAppointment() {
+            const date = document.getElementById('appointment-date').value;
+            const service = document.getElementById('appointment-service').value;
+            const name = document.getElementById('appointment-name').value;
+            const phone = document.getElementById('appointment-phone').value;
+            const time = document.getElementById('appointment-time').value;
+            
+            if (service && name && phone && time && date) {
+                const appointment = {
+                    id: appointmentsData.length + 1,
+                    service,
+                    name,
+                    phone,
+                    date: date,
+                    time
+                };
+                appointmentsData.push(appointment);
+                
+                document.getElementById('appointment-date').value = '';
+                document.getElementById('appointment-service').value = '';
+                document.getElementById('appointment-name').value = '';
+                document.getElementById('appointment-phone').value = '';
+                document.getElementById('appointment-time').value = '';
+                
+                showNotification('✓ Appointment booked! Check your WhatsApp for confirmation.');
+                sendEmailNotification(`New appointment booked: ${name} on ${appointment.date} at ${time}`);
+                
+                setTimeout(() => scrollToSection('services'), 1500);
+            } else {
+                alert('Please fill all fields');
+            }
+        }
 
-        function addToCart(productId) {
-            const product = productsData.find(p => p.id === productId);
-            showNotification(`✓ ${product.name} added to cart! Contact us on WhatsApp to complete purchase.`);
-        }
+        function addToCart(productId) {
+            const product = productsData.find(p => p.id === productId);
+            showNotification(`✓ ${product.name} added to cart! Contact us on WhatsApp to complete purchase.`);
+        }
 
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 4000);
-        }
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 4000);
+        }
 
-        function sendEmailNotification(message) {
-            // Integration with email service (EmailJS, Sendgrid, etc.)
-            console.log('Email notification:', message);
-            // Example: Send to admin email
-            // emailjs.send('service_id', 'template_id', {
-            //     to_email: 'Phonelab.haitem@gmail.com',
-            //     message: message
-            // });
-        }
+        function sendEmailNotification(message) {
+            // Integration with email service (EmailJS, Sendgrid, etc.)
+            console.log('Email notification:', message);
+            // Example: Send to admin email
+            // emailjs.send('service_id', 'template_id', {
+            //     to_email: 'Phonelab.haitem@gmail.com',
+            //     message: message
+            // });
+        }
 
-        function switchAdminTab(tab) {
-            document.querySelectorAll('.admin-content').forEach(el => el.classList.remove('show'));
-            document.querySelectorAll('.admin-tab').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(tab + '-tab').classList.add('show');
-            event.target.classList.add('active');
-        }
+        function switchAdminTab(tab) {
+            document.querySelectorAll('.admin-content').forEach(el => el.classList.remove('show'));
+            document.querySelectorAll('.admin-tab').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tab + '-tab').classList.add('show');
+            event.target.classList.add('active');
+        }
 
-        function submitForm() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && message) {
-                // Send to Google Sheets or email
-                showNotification('Thank you! Your message has been sent.');
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('message').value = '';
-                sendEmailNotification(`New message from ${name}: ${message}`);
-            } else {
-                alert('Please fill all fields');
-            }
-        }
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                // Send to Google Sheets or email
+                showNotification('Thank you! Your message has been sent.');
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+                sendEmailNotification(`New message from ${name}: ${message}`);
+            } else {
+                alert('Please fill all fields');
+            }
+        }
 
-        function openGoogleSheets() {
-            // Replace with your Google Sheets link
-            window.open('https://docs.google.com/spreadsheets/d/1vkt18PHQHiV5mv66gBY4v2cfL03AMITtf8HhhF0nyVk/edit?gid=0#gid=0', '_blank');
-        }
-    </script>
+        function openGoogleSheets() {
+            // Replace with your Google Sheets link
+            window.open('https://docs.google.com/spreadsheets/d/1vkt18PHQHiV5mv66gBY4v2cfL03AMITtf8HhhF0nyVk/edit?gid=0#gid=0', '_blank');
+        }
+    </script>
 <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyASrLM_GuFNx3S1z9_JPkIbxS9jAGyROp4",
-    authDomain: "phonelabhaitem-e5f83.firebaseapp.com",
-    projectId: "phonelabhaitem-e5f83",
-    storageBucket: "phonelabhaitem-e5f83.firebasestorage.app",
-    messagingSenderId: "322537891528",
-    appId: "1:322537891528:web:7e1d69202e235da93c67fd",
-    measurementId: "G-YMG8CD0MBK"
-  };
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyASrLM_GuFNx3S1z9_JPkIbxS9jAGyROp4",
+    authDomain: "phonelabhaitem-e5f83.firebaseapp.com",
+    projectId: "phonelabhaitem-e5f83",
+    storageBucket: "phonelabhaitem-e5f83.firebasestorage.app",
+    messagingSenderId: "322537891528",
+    appId: "1:322537891528:web:7e1d69202e235da93c67fd",
+    measurementId: "G-YMG8CD0MBK"
+  };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 </script>
 </body>
 </html>
+      
