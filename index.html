@@ -998,16 +998,19 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             border-color: var(--accent);
             color: var(--dark);
         }
+                
         .timeline-label {
             font-size: 0.75rem;
             color: #a0a0a0;
             text-align: center;
         }
+                
         .timeline-connector {
             width: 30px;
             height: 2px;
             background: rgba(0, 212, 255, 0.2);
         }
+                
         /* Notifications */
         .notification {
             position: fixed;
@@ -1022,29 +1025,33 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             z-index: 3000;
             max-width: 400px;
         }
+                
         @keyframes slideInRight {
             from {
                 transform: translateX(400px);
                 opacity: 0;
-            }
+            }    
             to {
                 transform: translateX(0);
                 opacity: 1;
             }
         }
-        .admin-header {
+                
+            admin-tabs   .admin-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
             color: var(--primary);
         }
+                
         .admin-tabs {
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
             border-bottom: 2px solid rgba(0, 212, 255, 0.2);
         }
+                
         .admin-tab {
             background: none;
             border: none;
@@ -1054,21 +1061,26 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             transition: all 0.3s;
             font-size: 1rem;
         }
+                
         .admin-tab.active {
             color: var(--primary);
             border-bottom: 2px solid var(--primary);
             text-shadow: 0 0 10px var(--primary);
         }
+                
         .admin-content {
             display: none;
         }
+                
         .admin-content.show {
             display: block;
         }
+                
         .service-list {
             display: grid;
             gap: 1rem;
         }
+                
         .service-item {
             background: rgba(0, 212, 255, 0.05);
             border: 1px solid rgba(0, 212, 255, 0.2);
@@ -1079,6 +1091,7 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             gap: 1rem;
             align-items: center;
         }
+                
         .service-item-info input {
             background: rgba(0, 212, 255, 0.05);
             border: 1px solid rgba(0, 212, 255, 0.2);
@@ -1088,17 +1101,21 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             width: 100%;
             margin-bottom: 0.5rem;
         }
+                
         .service-item-actions {
             display: flex;
             gap: 0.5rem;
         }
+                
         .btn-sm {
             padding: 0.5rem 1rem;
             font-size: 0.85rem;
         }
+                
         .btn-danger {
             background: var(--danger);
         }
+                
         /* Footer */
         footer {
             background: var(--darker);
@@ -1107,31 +1124,38 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             text-align: center;
             color: #808080;
         }
+                
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
+                    
             .hero p {
                 font-size: 1rem;
             }
+                    
             .section-title {
                 font-size: 1.8rem;
             }
+                    
             .contact-content {
                 grid-template-columns: 1fr;
             }
+                    
             .hero-buttons {
                 flex-direction: column;
             }
+                    
             .btn {
                 width: 100%;
             }
         }
     </style>
 </head>
-<body>        <!-- Navigation -->
+<body>        <!-- Navigation -->
         <nav>
+                    
                                 <div class="logo">
     <div class="logo-img">
         <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/2cabd52f-3305-471c-925b-f606e099fdb9" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
@@ -1141,6 +1165,7 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
         <span class="neon-logo-subtitle">By Haitem Telecom</span>
     </div>
 </div>
+                    
             <button class="nav-toggle" onclick="toggleNav()">☰</button>
             <div class="nav-center">
                 <ul class="nav-links">
@@ -1162,6 +1187,7 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
                 <button class="admin-btn" onclick="openAdminModal()">Admin</button>
             </div>
         </nav>
+            
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -1173,6 +1199,7 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             </div>
         </div>
     </section>
+            
     <!-- Services Section -->
     <section id="services" class="services">
         <h2 class="section-title" id="services-title">Our Services</h2>
@@ -1180,6 +1207,7 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             <!-- Services will be populated here -->
         </div>
     </section>
+            
     <!-- Products Section -->
     <section id="products" class="services">
         <h2 class="section-title" id="products-title">Products For Sale</h2>
@@ -1187,6 +1215,7 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             <!-- Products will be populated here -->
         </div>
     </section>
+            
     <!-- Repair Status Section -->
     <section id="repairs" class="services">
         <h2 class="section-title" id="repairs-title">Check Your Repair Status</h2>
@@ -1234,12 +1263,14 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             </div>
         </div>
     </section>
+            
     <!-- About Section -->
     <section id="about" class="about">
         <h2 id="about-title">About Us</h2>
         <p id="about-text-1">At Phone Lab Haitem, we provide exceptional repair services for all your mobile devices and electronics. With years of expertise and proven experience, our skilled technicians handle everything from screen repairs to water damage recovery.</p>
         <p id="about-text-2">Our mission is simple: Repair, Refurbish, Reuse, and Recycle. We are dedicated to extending the life of your devices while promoting sustainability and delivering reliable, high-quality service that protects your data and the environment.</p>
     </section>
+            
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2 class="section-title" id="contact-title">Get In Touch</h2>
@@ -1287,6 +1318,7 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             </div>
         </div>
     </section>
+            
     <!-- Admin Login Modal -->
     <div id="adminModal" class="modal">
         <div class="modal-content">
@@ -1303,6 +1335,7 @@ body.light-mode .neon-logo-subtitle{ color: rgba(0, 5, 85, 0.8);
             <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="adminLogin()">Login</button>
         </div>
     </div>
+            
     <!-- Admin Panel -->
     <div id="adminPanel" class="admin-panel">
         <div class="admin-header">
@@ -1584,7 +1617,8 @@ ar: {
                     element.textContent = currentTranslations[key];
                 }
             });
-            renderServices();
+                    
+                    renderRepairsrenderServices();
             renderProducts();
             localStorage.setItem('language', lang);
         }
@@ -1698,12 +1732,14 @@ ar: {
             if (repair) {
                 renderRepairs(repair);
                 showNotification(`✓ ${translations[currentLanguage]['btn-check-status']}`);
-            } else {renderRepairs(null);
+            } else renderRepairs
+            renderRepairsenderRepairs(null);
                 showNotification('❌ ' + translations[currentLanguage]['status-not-found']);
                 alert(translations[currentLanguage]['status-not-found']);
             }
         }
-                    function addRepairDevice() {
+                
+                 addRepairDeviceRepairDevice() {
             const deviceName = document.getElementById('new-device-name').value.trim();
             const customerName = document.getElementById('new-device-customer').value.trim();
             
@@ -1712,8 +1748,7 @@ ar: {
                 return;
             }
             
-            // Generate repair code based on numerical order
-                    
+            // Generate repair code based on numerical order        
     const nextNumber = String(repairsData.length + 1).padStart(3, '0');
             const repairCode = `RP${nextNumber}`;
             
