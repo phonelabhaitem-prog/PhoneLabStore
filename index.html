@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Lab Haitem - Device Repair Services</title>
+     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -153,11 +155,8 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            background: linear-gradient(135deg, #00d4ff, #00ff88, #ff006e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -168,12 +167,79 @@
             height: 40px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             font-size: 1.2rem;
         }
+         .neon-logo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    position: relative;
+}
+
+.neon-logo-primary {
+    font-family: 'Allura', cursive;
+    font-size: 2rem;
+    color: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #00d4ff,
+        0 0 40px #00d4ff,
+        0 0 80px #00d4ff,
+        0 0 90px #00d4ff,
+        0 0 100px #00d4ff;
+    animation: neon-flicker 2.5s infinite alternate;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.neon-logo-subtitle {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 
+        0 0 3px rgba(255, 255, 255, 0.5),
+        0 0 7px rgba(255, 0, 110, 0.6),
+        0 0 15px rgba(255, 0, 110, 0.4);
+    letter-spacing: 0.1em;
+    margin-left: 2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #00d4ff,
+            0 0 40px #00d4ff,
+            0 0 80px #00d4ff,
+            0 0 90px #00d4ff,
+            0 0 100px #00d4ff;
+    }
+    20%, 24%, 55% {        
+        text-shadow:
+            0 0 3px #fff,
+            0 0 5px #00d4ff;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+    .neon-logo-primary {
+        font-size: 1.5rem;
+    }
+    .neon-logo-subtitle {
+        font-size: 0.6rem;
+        margin-left: 1.5rem;
+    }
+}
+
 
         .nav-toggle {
             display: none;
@@ -1065,10 +1131,18 @@
 </head>
 <body>        <!-- Navigation -->
         <nav>
-            <div class="logo">
-                <div class="logo-img">📱</div>
-                <span id="logo-text">Phone Lab Haitem</span>
-            </div>
+                                <div class="logo">
+    <div class="logo-img">
+        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/2cabd52f-3305-471c-925b-f606e099fdb9" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="neon-logo-container">
+        <span class="neon-logo-primary">PhoneLab</span>
+        <span class="neon-logo-subtitle">By Haitem Telecom</span>
+    </div>
+</div>
+
+
+
             <button class="nav-toggle" onclick="toggleNav()">☰</button>
             <div class="nav-center">
                 <ul class="nav-links">
@@ -1197,7 +1271,7 @@
                     <div class="contact-item-icon">✉️</div>
                     <div class="contact-item-text">
                         <h3 id="contact-email">Email</h3>
-                        <p id="contact-email-text">info@phonelabhaitem.com</p>
+                        <p id="contact-email-text">Phonelab.haitem@gmail.com</p>
                     </div>
                 </div>
                 <a href="#" class="whatsapp-btn" onclick="openWhatsApp(); return false;" id="whatsapp-link">
@@ -1336,9 +1410,9 @@
                 'contact-address': 'Address',
                 'contact-address-text': 'Tlemcen, Tlemcen Province, Algeria',
                 'contact-phone': 'Phone',
-                'contact-phone-text': '+213 XXX XXX XXX',
+                'contact-phone-text': '+213 560 32 94 92 / +213 669 74 29 53',
                 'contact-email': 'Email',
-                'contact-email-text': 'info@phonelabhaitem.com',
+                'contact-email-text': 'Phonelab.haitem@gmail.com',
                 'whatsapp-text': 'Chat on WhatsApp',
                 'form-name': 'Name',
                 'form-email': 'Email',
@@ -1388,9 +1462,9 @@
                 'contact-address': 'Adresse',
                 'contact-address-text': 'Tlemcen, Province de Tlemcen, Algérie',
                 'contact-phone': 'Téléphone',
-                'contact-phone-text': '+213 XXX XXX XXX',
+                'contact-phone-text': '+213 560 32 94 92 / +213 669 74 29 53',
                 'contact-email': 'E-mail',
-                'contact-email-text': 'info@phonelabhaitem.com',
+                'contact-email-text': 'Phonelab.haitem@gmail.com',
                 'whatsapp-text': 'Chatter sur WhatsApp',
                 'form-name': 'Nom',
                 'form-email': 'E-mail',
@@ -1440,9 +1514,9 @@
                 'contact-address': 'العنوان',
                 'contact-address-text': 'تلمسان، ولاية تلمسان، الجزائر',
                 'contact-phone': 'الهاتف',
-                'contact-phone-text': '+213 XXX XXX XXX',
+                'contact-phone-text': '+213 560 32 94 92 / +213 669 74 29 53',
                 'contact-email': 'البريد الإلكتروني',
-                'contact-email-text': 'info@phonelabhaitem.com',
+                'contact-email-text': 'Phonelab.haitem@gmail.com',
                 'whatsapp-text': 'دردشة على WhatsApp',
                 'form-name': 'الاسم',
                 'form-email': 'البريد الإلكتروني',
@@ -1712,7 +1786,7 @@
 
         // WhatsApp Integration
         function openWhatsApp() {
-            const phoneNumber = '+213XXXXXXXXX'; // Replace with actual number
+            const phoneNumber = '+213560329492'; // Replace with actual number
             const message = encodeURIComponent('Hello, I need device repair services.');
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
@@ -1727,37 +1801,41 @@
         }
 
         function adminLogin() {
-            const username = document.getElementById('admin-username').value;
-            const password = document.getElementById('admin-password').value;
-            
-            // Simple login (replace with real authentication)
-            if (username === 'admin' && password === 'admin123') {
-                adminLoggedIn = true;
-                closeAdminModal();
-                document.getElementById('adminPanel').classList.add('show');
-                document.getElementById('services').style.display = 'none';
-                document.getElementById('about').style.display = 'none';
-                document.getElementById('contact').style.display = 'none';
-                loadAdminPanel();
-            } else {
-                alert('Invalid credentials');
-            }
-        }
+    const email = document.getElementById('admin-username').value;
+    const password = document.getElementById('admin-password').value;
+    
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            adminLoggedIn = true;
+            closeAdminModal();
+            document.getElementById('adminPanel').classList.add('show');
+            document.getElementById('services').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('contact').style.display = 'none';
+            loadAdminPanel();
+            showNotification('✓ Logged in successfully');
+        })
+        .catch((error) => {
+            showNotification('❌ ' + error.message);
+        });
+}
+
 
         function logoutAdmin() {
-            adminLoggedIn = false;
-            document.getElementById('adminPanel').classList.remove('show');
-            document.getElementById('hero').style.display = 'flex';
-            document.getElementById('services').style.display = 'block';
-            document.getElementById('products').style.display = 'block';
-            document.getElementById('repairs').style.display = 'block';
-            document.getElementById('booking').style.display = 'block';
-            document.getElementById('about').style.display = 'block';
-            document.getElementById('contact').style.display = 'block';
-            document.getElementById('admin-username').value = '';
-            document.getElementById('admin-password').value = '';
-            showNotification('✓ Logged out successfully!');
-        }
+    adminLoggedIn = false;
+    document.getElementById('adminPanel').classList.remove('show');
+    document.getElementById('hero').style.display = 'flex';
+    document.getElementById('services').style.display = 'block';
+    document.getElementById('products').style.display = 'block';
+    document.getElementById('repairs').style.display = 'block';
+    document.getElementById('booking').style.display = 'block';
+    document.getElementById('about').style.display = 'block';
+    document.getElementById('contact').style.display = 'block';
+    document.getElementById('admin-username').value = '';
+    document.getElementById('admin-password').value = '';
+    showNotification('✓ Logged out successfully');
+}
+
 
         function loadAdminPanel() {
             const adminServicesList = document.getElementById('admin-services-list');
@@ -1980,7 +2058,7 @@
             console.log('Email notification:', message);
             // Example: Send to admin email
             // emailjs.send('service_id', 'template_id', {
-            //     to_email: 'admin@phonelabhaitem.com',
+            //     to_email: 'Phonelab.haitem@gmail.com',
             //     message: message
             // });
         }
@@ -2012,10 +2090,10 @@
 
         function openGoogleSheets() {
             // Replace with your Google Sheets link
-            window.open('https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit', '_blank');
+            window.open('https://docs.google.com/spreadsheets/d/1vkt18PHQHiV5mv66gBY4v2cfL03AMITtf8HhhF0nyVk/edit?gid=0#gid=0', '_blank');
         }
     </script>
-    <script type="module">
+<script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
