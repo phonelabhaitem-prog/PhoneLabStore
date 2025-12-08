@@ -1830,7 +1830,7 @@ body.light-mode .neon-logo-subtitle {
             document.getElementById('adminModal').classList.remove('show');
         }
 
-        function adminLogin() {
+        async function adminLogin() {
     const email = document.getElementById('admin-username').value.trim();
     const password = document.getElementById('admin-password').value;
 
@@ -1839,48 +1839,49 @@ body.light-mode .neon-logo-subtitle {
         return;
     }
 
-    if (!window.firebase || !firebase.auth) {
-        showNotification('❌ Firebase not loaded on this page');
-        console.error('Firebase or firebase.auth is undefined');
-        return;
-    }
+    try {
+        const authModule = await import('https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js');
+        const { getAuth, signInWithEmailAndPassword } = authModule;
+        const auth = getAuth();
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log('LOGIN OK:', userCredential.user);
 
-    firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            console.log('LOGIN OK:', userCredential.user);
+        adminLoggedIn = true;
+        closeAdminModal();
 
-            adminLoggedIn = true;
-            closeAdminModal();
-
-            document.getElementById('adminPanel').classList.add('show');
-            document.getElementById('hero').style.display = 'none';
-            document.getElementById('services').style.display = 'none';
-            document.getElementById('products').style.display = 'none';
-            document.getElementById('repairs').style.display = 'none';
-            document.getElementById('booking').style.display = 'none';
-            document.getElementById('about').style.display = 'none';
-            document.getElementById('contact').style.display = 'none';
-
-            loadAdminPanel();
-            showNotification('✓ Logged in successfully');
-        })
-        .catch((error) => {
-            console.error('LOGIN ERROR:', error);
-            showNotification('❌ ' + (error.message || 'Login failed'));
+        document.getElementById('adminPanel').classList.add('show');
+        const hideIds = ['hero','services','products','repairs','booking','about','contact'];
+        hideIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'none';
         });
+
+        loadAdminPanel();
+        showNotification('✓ Logged in successfully');
+    } catch (error) {
+        console.error('LOGIN ERROR:', error);
+        showNotification('❌ ' + (error && error.message ? error.message : 'Login failed'));
+    }
 }
 
 
-        function logoutAdmin() {
+        async function logoutAdmin() {
+    try {
+        const authModule = await import('https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js');
+        const { getAuth, signOut } = authModule;
+        const auth = getAuth();
+        await signOut(auth);
+    } catch (err) {
+        console.warn('Sign-out failed or Firebase not initialized:', err);
+    }
+
     adminLoggedIn = false;
     document.getElementById('adminPanel').classList.remove('show');
-    document.getElementById('hero').style.display = 'flex';
-    document.getElementById('services').style.display = 'block';
-    document.getElementById('products').style.display = 'block';
-    document.getElementById('repairs').style.display = 'block';
-    document.getElementById('booking').style.display = 'block';
-    document.getElementById('about').style.display = 'block';
-    document.getElementById('contact').style.display = 'block';
+    const showIds = ['hero','services','products','repairs','booking','about','contact'];
+    showIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = (id === 'hero') ? 'flex' : 'block';
+    });
     document.getElementById('admin-username').value = '';
     document.getElementById('admin-password').value = '';
     showNotification('✓ Logged out successfully');
@@ -2142,6 +2143,7 @@ body.light-mode .neon-logo-subtitle {
             // Replace with your Google Sheets link
             window.open('https://docs.google.com/spreadsheets/d/1vkt18PHQHiV5mv66gBY4v2cfL03AMITtf8HhhF0nyVk/edit?gid=0#gid=0', '_blank');
         }
+        
     </script>
 <script type="module">
   // Import the functions you need from the SDKs you need
