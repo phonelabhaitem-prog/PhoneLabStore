@@ -2167,6 +2167,11 @@ body.light-mode .neon-logo-subtitle {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+            import { getAuth } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+        // ...
+        const auth = getAuth(app); // Initialize Auth
+        ```
+
 </script>
 </body>
 </html>
