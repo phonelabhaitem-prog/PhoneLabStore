@@ -1832,14 +1832,6 @@ body.light-mode .neon-logo-subtitle {
         }
 
         async function adminLogin() {
-            if (!firebase || !firebase.auth) {
-        showNotification('❌ Firebase not initialized');
-        return;
-    }
-    
-    const email = document.getElementById('admin-username').value;
-    const password = document.getElementById('admin-password').value;
-    
     (!email || !password) ? showNotification('❌ Please enter email and password') : 
     const email = document.getElementById('admin-username').value.trim();
     const password = document.getElementById('admin-password').value;
