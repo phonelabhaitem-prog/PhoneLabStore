@@ -1159,7 +1159,34 @@ body.light-mode .neon-logo-subtitle {
         }
     </style>
 </head>
-<body>        <!-- Navigation -->
+<body>    
+    <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script>
+  // Firebase Configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyASrLM_GuFNx3S1z9_JPkIbxS9jAGyROp4",
+    authDomain: "phonelabhaitem-e5f83.firebaseapp.com",
+    projectId: "phonelabhaitem-e5f83",
+    storageBucket: "phonelabhaitem-e5f83.firebasestorage.app",
+    messagingSenderId: "322537891528",
+    appId: "1:322537891528:web:7e1d69202e235da93c67fd"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  // Get references
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+  
+  console.log('✓ Firebase initialized successfully');
+</script>
+    <!-- Navigation -->
         <nav>
                                 <div class="logo">
     <div class="logo-img">
