@@ -1159,8 +1159,7 @@ body.light-mode .neon-logo-subtitle {
         }
     </style>
 </head>
-<body>    
-    <!-- Navigation -->
+<body>        <!-- Navigation -->
         <nav>
                                 <div class="logo">
     <div class="logo-img">
@@ -1597,7 +1596,7 @@ body.light-mode .neon-logo-subtitle {
         let isDarkMode = true;
 
         // Initialize
-      /*  window.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('DOMContentLoaded', function() {
             const savedLanguage = localStorage.getItem('language') || 'en';
             changeLanguage(savedLanguage);
             document.getElementById('language').value = savedLanguage;
@@ -1605,7 +1604,7 @@ body.light-mode .neon-logo-subtitle {
             renderProducts();
             loadTheme();
         });
-*/
+
         // Language Change
         function changeLanguage(lang) {
             currentLanguage = lang;
@@ -1832,7 +1831,6 @@ body.light-mode .neon-logo-subtitle {
         }
 
         async function adminLogin() {
-    (!email || !password) ? showNotification('❌ Please enter email and password') : 
     const email = document.getElementById('admin-username').value.trim();
     const password = document.getElementById('admin-password').value;
 
@@ -2147,26 +2145,10 @@ body.light-mode .neon-logo-subtitle {
         }
         
     </script>
-
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-  <script>  
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  
-  // Get references
-  const auth = firebase.auth();
-  
-  
-  console.log('✓ Firebase initialized successfully');
-</script>
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-    import { getAuth, signInWithEmailAndPassword } from "import { } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js"";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -2185,29 +2167,11 @@ body.light-mode .neon-logo-subtitle {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-            import { getAuth } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+          import { getAuth } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
         // ...
         const auth = getAuth(app); // Initialize Auth
-    
-
-    const submit= document.getElementById('submit');
-    submit.addevEntListener("click",fucntion(event) {
-         event.preventDefault()
-        const email = document.getElementById('admin-username').value;
-    const password = document.getElementById('admin-password').value;
-signInWithEmailAndPassword(emaillemailil, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-             
-    })
-
+      const email= document.getElementById('admin-username').value;
+        const password= document.getElementById('admin-password').value;
 </script>
 </body>
 </html>
